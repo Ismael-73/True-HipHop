@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>True HipHop</title>
+    <script src="main.js"></script>
+    <link rel="shortcut icon" href="circulo_transparente.ico" type="/xicon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- "tr"= lines-->
+     <!-- "td" =columns -->
+    <!-- header "encabezado" -->
+    <header>
+            <table width="100%">
+                <tr>
+                    <td width="50%">
+                        <center><img class="logo" src="Diseño sin título (2).png" alt="" ></center>
+                    </td>
+                  </tr>
+                <tr>
+                    <td width="50%">
+                        <center><a href="Portafolio.html">Portafolio de evidencia</a></center>
+                    </td>
+                </tr>
+            </table>
+    </header>
+    <nav >
+        <center>
+            <table>
+                <tr>  
+                        <td>
+                            <a href="index.html">Inicio</a>
+                        </td>
+
+                        <td>
+                            <a href="historia.html">Historia</a>
+                        </td>
+
+                        <td>
+                            <a href="artistas.html">Artistas</a>
+                        </td>
+
+                        <td>
+                            <a href="mejoresdiscos.html">Mejores discos de la historia</a>
+                        </td>
+
+                        <td>
+                            <a href="contacto.html">Contacto</D El></a>
+                        </td>         
+                </tr>
+            </table>
+        </center>
+        <hr>
+    </nav>
+    <main>
+        <table width="100%">
+            <tr>
+
+                <td width="50%">
+                    <h2>Formulario de contacto</h2>
+                    <form>
+                        <label for="">Nombre</label>
+                        <input type="text" name="nombre" id="nombre">
+                        <br>
+                        <label for="">Correo Electronico</label>
+                        <input type="email" name="correo" id="correo">
+                        <br>
+                        <label for="">Telefono</label>
+                        <input type="number" name="telefono" id="telefono">
+                        <br>
+                        <label for="">Fecha de nacimiento</label>
+                        <input type="date" name="fechanac" id="fechanac">
+                        <br>
+                        <br>
+
+                        <label for="">¿Eres estudiante?</label>
+                        <select type="text" name="estu" id="estu">
+                            <option value=""></option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
+                        </select>
+
+                        <br>
+                        <label for="">¿En que Universidad estudias?</label>
+                        <select type="text"name="univer" id="univer" >
+                            <option value=""></option>
+                            <option value="UAT">UAT</option>
+                            <option value="UT">UT</option>
+                            <option value="ICEST">ICEST</option>
+                            <option value="Tecnologico">Tecnologico</option>
+                            <option value="Tecmilenio">Tecmilenio</option>
+                            <option value="Royal">Royal</option>
+                            <option value="UPN">UPN</option>
+                        </select>
+                        <br>
+                        <br>
+                        <label for="">¿Cuales son tus temas de interes?</label>
+                        <br>
+                        <input type="checkbox" name="opcion1" id="opcion1"> Discografias
+                        <br>
+                        <input type="checkbox" name="opcion2" id="opcion2"> Noticias
+                        <br>
+                        <input type="checkbox" name="opcion3" id="opcion3"> Artistas
+                        <br>
+                        <input type="checkbox" name="opcion4" id="opcion4"> Foros sobre RAP
+                        <br>
+                        <input type="checkbox" name="opcion5" id="opcion5"> Grafiti o arte callejero
+                        <br>
+                        <input type="checkbox" name="opcion6" id="opcion6"> Breakdance
+                        <br>
+                        <br>
+                        <label for="">¿Cual crees que es la epoca de oro del RAP?</label>
+                        <select type="text" name="epocarap" id="epocarap">
+                            <option value="">1973 - 1979</option>
+                            <option value="">1980 - 1989</option>
+                            <option value="">1990 - 1999</option>
+                            <option value="">2000 - 2009</option>
+                            <option value="">2010 - 2019</option>
+                            <option value="">2020 - ACTUALIDAD</option>
+                        </select>
+                        <br>
+                        <br>
+                        <label for="">Comentarios</label>
+                        <br>
+                        <textarea name="comentarios" id="comentarios"></textarea>
+                        <br>
+                        <br>
+                        <label for="">¿Deseas adjuntar algo?</label>
+                        <input type="file" name="adjunto" id="adjunto">
+                        <br>
+                        <br>
+                        <button type="button" onclick="contacto()">ENVIAR</button>   
+                    </form>
+                </td>
+
+                <td width="50%">
+                    <h2>Datos de contacto</h2>
+                    <table>
+                        <tr>
+                            <td>
+                                Nombre:
+                            </td>
+
+                            <td>
+                                Ismael Juarez Lopez
+                            </td>
+                        </tr>
+
+                       <tr> 
+                                Correo electronico:
+                            </td>
+
+                            <td>
+                                <a href="mailto:ismaeljl02@outlook.es">ismaeljl02@outlook.es</a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </main>
+    <footer>
+            <div class="span">
+                <span></span>
+            </div>          
+            <table width="99%">
+                <tr >
+                    <td width="33%" class="levantarfoto">
+                        <img class="fotored" src="assets/img/face2.png" alt="" width="20%">
+                        <h1><a href="https://Facebook.com" target="_blank" class="Facebook">Facebook</a></h1>
+                    </td>
+                    <td width="33%" class="levantarfoto">
+                            <img class="fotored" src="assets/img/insta2.jpg" alt="" width="20%">
+                            <h1><a href="https://instagram.com" target="_blank" class="Instagram">Instagram</a></h1>
+                    </td >
+                    <td width=33% class="levantarfoto">
+                        <img class="fotored" src="assets/img/youtube4.png" alt="" width="25%">
+                        <h1><a href="https://yotube.com" target="_blank" class="Youtube">Youtube</a></h1>
+                    </td>
+                </tr>
+            </table>
+            <div class="span">
+                <span >Copyright (c) 2025 Ismael Juarez Lopez
+                    Todos los derechos reservados.
+                    Se prohíbe la copia, distribución, modificación o uso de este código o contenido sin permiso explícito del autor.</span>
+            </div>
+     </footer>
+</body>
+</html>

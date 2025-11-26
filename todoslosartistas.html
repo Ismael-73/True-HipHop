@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>True HipHop</title>
+<link href="circulo_transparente.ico" rel="shortcut icon" type="/xicon"/>
+<link href="style.css" rel="stylesheet"/>
+<style>
+/* Catálogo en tarjetas (grid responsive) */
+.catalogo-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 10px 0 16px;
+}
+.card-hiphop{
+  border: 2px solid #000;
+  border-radius: 12px;
+  padding: 12px;
+  background:#fee8c3;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.card-hiphop:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,.15);
+}
+.card-hiphop .artista{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 20px;
+  color:#02010c;
+  line-height:1.1;
+}
+.card-hiphop .album a{
+  font-weight:700;
+  text-decoration:none;
+  color:#02010c;
+}
+.card-hiphop .album a:hover{ color:blue; text-decoration:underline; }
+.card-hiphop .meta{
+  font-size:12px;
+  opacity:.8;
+}
+#controlesCatalogo .boton{
+  border: 2px solid #02010c;
+  background:#fff4dc;
+  padding:6px 10px;
+  border-radius:10px;
+  cursor:pointer;
+}
+#controlesCatalogo select.boton{
+  padding:6px 8px;
+}
+</style></head>
+<body>
+<!-- "tr"= lines-->
+<!-- "td" =columns -->
+<!-- header "encabezado" -->
+<header>
+<table width="100%">
+<tr>
+<td width="50%">
+<center><img alt="" class="logo" src="Diseño sin título (2).png"/></center>
+</td>
+</tr>
+<tr>
+<td width="50%">
+<center><a href="Portafolio.html">Portafolio de evidencia</a></center>
+</td>
+</tr>
+</table>
+</header>
+<nav>
+<center>
+<table>
+<tr>
+<td>
+<a href="index.html">Inicio</a>
+</td>
+<td>
+<a href="historia.html">Historia</a>
+</td>
+<td>
+<a href="artistas.html">Artistas</a>
+</td>
+<td>
+<a href="mejoresdiscos.html">Mejores discos de la historia</a>
+</td>
+<td>
+<a href="contacto.html">Contacto</a>
+</td>
+</tr>
+</table>
+</center>
+<hr/>
+</nav>
+<main>
+<title>Hip-Hop – 200 artistas</title>
+<style>
+  body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;margin:20px;}
+  h2{background:#FFC159;padding:10px;border-radius:12px;}
+  .tabla{border-collapse:separate;overflow:hidden;width:100%;}
+  .tabla td,.tabla th{border:2px solid #000;border-radius:12px;padding:10px;text-align:center;background:#fee8c3;}
+  a{color:#000;font-weight:650;text-decoration:none;}
+  a:hover{color:blue;text-decoration:underline;}
+  #filtro{padding:8px 12px;border:2px solid #000;border-radius:10px;width:100%;max-width:480px;}
+</style>
+<center>><h2>Mas artistas de Hip-Hop con enlaces a YouTube Music</h2></center
+<div style="margin:10px 0;"><input id="filtro" placeholder="Buscar artista o disco…" type="search"/></div>
+<div id="controlesCatalogo" style="margin:12px 0; display:flex; flex-wrap:wrap; gap:8px; align-items:center;"><select class="boton" id="filtroPais"><option value="">Todos los países</option></select><select class="boton" id="filtroLetra"><option value="">Todas las letras</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option><option value="J">J</option><option value="K">K</option><option value="L">L</option><option value="M">M</option><option value="N">N</option><option value="O">O</option><option value="P">P</option><option value="Q">Q</option><option value="R">R</option><option value="S">S</option><option value="T">T</option><option value="U">U</option><option value="V">V</option><option value="W">W</option><option value="X">X</option><option value="Y">Y</option><option value="Z">Z</option></select><button class="boton" id="btnVistaCatalogo">Vista catálogo</button><button class="boton" id="btnVistaTabla">Vista tabla</button></div><div class="catalogo-grid" id="catalogoGrid" style="display:none;"></div><table class="tabla" id="tablaArtistas">
+<thead><tr><th><h3>Artista</h3></th><th> <h3>Disco recomendado</h3> </th></tr></thead>
+<tbody>
+<tr><td>2Pac</td><td><a href="https://music.youtube.com/search?q=2Pac%20All%20Eyez%20on%20Me" rel="noopener" target="_blank">All Eyez on Me</a></td></tr>
+<tr><td>The Notorious B.I.G.</td><td><a href="https://music.youtube.com/search?q=The%20Notorious%20B.I.G.%20Ready%20to%20Die" rel="noopener" target="_blank">Ready to Die</a></td></tr>
+<tr><td>Jay-Z</td><td><a href="https://music.youtube.com/search?q=Jay-Z%20The%20Blueprint" rel="noopener" target="_blank">The Blueprint</a></td></tr>
+<tr><td>Nas</td><td><a href="https://music.youtube.com/search?q=Nas%20Illmatic" rel="noopener" target="_blank">Illmatic</a></td></tr>
+<tr><td>Eminem</td><td><a href="https://music.youtube.com/search?q=Eminem%20The%20Marshall%20Mathers%20LP" rel="noopener" target="_blank">The Marshall Mathers LP</a></td></tr>
+<tr><td>Dr. Dre</td><td><a href="https://music.youtube.com/search?q=Dr.%20Dre%202001" rel="noopener" target="_blank">2001</a></td></tr>
+<tr><td>Snoop Dogg</td><td><a href="https://music.youtube.com/search?q=Snoop%20Dogg%20Doggystyle" rel="noopener" target="_blank">Doggystyle</a></td></tr>
+<tr><td>Ice Cube</td><td><a href="https://music.youtube.com/search?q=Ice%20Cube%20The%20Predator" rel="noopener" target="_blank">The Predator</a></td></tr>
+<tr><td>N.W.A</td><td><a href="https://music.youtube.com/search?q=N.W.A%20Straight%20Outta%20Compton" rel="noopener" target="_blank">Straight Outta Compton</a></td></tr>
+<tr><td>Wu-Tang Clan</td><td><a href="https://music.youtube.com/search?q=Wu-Tang%20Clan%20Enter%20the%20Wu-Tang%20%2836%20Chambers%29" rel="noopener" target="_blank">Enter the Wu-Tang (36 Chambers)</a></td></tr>
+<tr><td>Raekwon</td><td><a href="https://music.youtube.com/search?q=Raekwon%20Only%20Built%204%20Cuban%20Linx..." rel="noopener" target="_blank">Only Built 4 Cuban Linx...</a></td></tr>
+<tr><td>Ghostface Killah</td><td><a href="https://music.youtube.com/search?q=Ghostface%20Killah%20Supreme%20Clientele" rel="noopener" target="_blank">Supreme Clientele</a></td></tr>
+<tr><td>Method Man</td><td><a href="https://music.youtube.com/search?q=Method%20Man%20Tical" rel="noopener" target="_blank">Tical</a></td></tr>
+<tr><td>GZA</td><td><a href="https://music.youtube.com/search?q=GZA%20Liquid%20Swords" rel="noopener" target="_blank">Liquid Swords</a></td></tr>
+<tr><td>Ol' Dirty Bastard</td><td><a href="https://music.youtube.com/search?q=Ol%27%20Dirty%20Bastard%20Return%20to%20the%2036%20Chambers" rel="noopener" target="_blank">Return to the 36 Chambers</a></td></tr>
+<tr><td>Mobb Deep</td><td><a href="https://music.youtube.com/search?q=Mobb%20Deep%20The%20Infamous" rel="noopener" target="_blank">The Infamous</a></td></tr>
+<tr><td>OutKast</td><td><a href="https://music.youtube.com/search?q=OutKast%20Aquemini" rel="noopener" target="_blank">Aquemini</a></td></tr>
+<tr><td>Andre 3000</td><td><a href="https://music.youtube.com/search?q=Andre%203000%20The%20Love%20Below" rel="noopener" target="_blank">The Love Below</a></td></tr>
+<tr><td>Big Boi</td><td><a href="https://music.youtube.com/search?q=Big%20Boi%20Sir%20Lucious%20Left%20Foot" rel="noopener" target="_blank">Sir Lucious Left Foot</a></td></tr>
+<tr><td>A Tribe Called Quest</td><td><a href="https://music.youtube.com/search?q=A%20Tribe%20Called%20Quest%20The%20Low%20End%20Theory" rel="noopener" target="_blank">The Low End Theory</a></td></tr>
+<tr><td>De La Soul</td><td><a href="https://music.youtube.com/search?q=De%20La%20Soul%203%20Feet%20High%20and%20Rising" rel="noopener" target="_blank">3 Feet High and Rising</a></td></tr>
+<tr><td>Public Enemy</td><td><a href="https://music.youtube.com/search?q=Public%20Enemy%20It%20Takes%20a%20Nation%20of%20Millions%20to%20Hold%20Us%20Back" rel="noopener" target="_blank">It Takes a Nation of Millions to Hold Us Back</a></td></tr>
+<tr><td>Run-DMC</td><td><a href="https://music.youtube.com/search?q=Run-DMC%20Raising%20Hell" rel="noopener" target="_blank">Raising Hell</a></td></tr>
+<tr><td>LL Cool J</td><td><a href="https://music.youtube.com/search?q=LL%20Cool%20J%20Mama%20Said%20Knock%20You%20Out" rel="noopener" target="_blank">Mama Said Knock You Out</a></td></tr>
+<tr><td>Beastie Boys</td><td><a href="https://music.youtube.com/search?q=Beastie%20Boys%20Paul%27s%20Boutique" rel="noopener" target="_blank">Paul's Boutique</a></td></tr>
+<tr><td>Eric B. &amp; Rakim</td><td><a href="https://music.youtube.com/search?q=Eric%20B.%20%26%20Rakim%20Paid%20in%20Full" rel="noopener" target="_blank">Paid in Full</a></td></tr>
+<tr><td>Rakim</td><td><a href="https://music.youtube.com/search?q=Rakim%20The%2018th%20Letter" rel="noopener" target="_blank">The 18th Letter</a></td></tr>
+<tr><td>Big Daddy Kane</td><td><a href="https://music.youtube.com/search?q=Big%20Daddy%20Kane%20Long%20Live%20the%20Kane" rel="noopener" target="_blank">Long Live the Kane</a></td></tr>
+<tr><td>KRS-One</td><td><a href="https://music.youtube.com/search?q=KRS-One%20Return%20of%20the%20Boom%20Bap" rel="noopener" target="_blank">Return of the Boom Bap</a></td></tr>
+<tr><td>Boogie Down Productions</td><td><a href="https://music.youtube.com/search?q=Boogie%20Down%20Productions%20By%20All%20Means%20Necessary" rel="noopener" target="_blank">By All Means Necessary</a></td></tr>
+<tr><td>EPMD</td><td><a href="https://music.youtube.com/search?q=EPMD%20Strictly%20Business" rel="noopener" target="_blank">Strictly Business</a></td></tr>
+<tr><td>Redman</td><td><a href="https://music.youtube.com/search?q=Redman%20Muddy%20Waters" rel="noopener" target="_blank">Muddy Waters</a></td></tr>
+<tr><td>DMX</td><td><a href="https://music.youtube.com/search?q=DMX%20It%27s%20Dark%20and%20Hell%20Is%20Hot" rel="noopener" target="_blank">It's Dark and Hell Is Hot</a></td></tr>
+<tr><td>Ja Rule</td><td><a href="https://music.youtube.com/search?q=Ja%20Rule%20Rule%203%3A36" rel="noopener" target="_blank">Rule 3:36</a></td></tr>
+<tr><td>50 Cent</td><td><a href="https://music.youtube.com/search?q=50%20Cent%20Get%20Rich%20or%20Die%20Tryin%27" rel="noopener" target="_blank">Get Rich or Die Tryin'</a></td></tr>
+<tr><td>The Game</td><td><a href="https://music.youtube.com/search?q=The%20Game%20The%20Documentary" rel="noopener" target="_blank">The Documentary</a></td></tr>
+<tr><td>Kendrick Lamar</td><td><a href="https://music.youtube.com/search?q=Kendrick%20Lamar%20To%20Pimp%20a%20Butterfly" rel="noopener" target="_blank">To Pimp a Butterfly</a></td></tr>
+<tr><td>J. Cole</td><td><a href="https://music.youtube.com/search?q=J.%20Cole%202014%20Forest%20Hills%20Drive" rel="noopener" target="_blank">2014 Forest Hills Drive</a></td></tr>
+<tr><td>Drake</td><td><a href="https://music.youtube.com/search?q=Drake%20Take%20Care" rel="noopener" target="_blank">Take Care</a></td></tr>
+<tr><td>Travis Scott</td><td><a href="https://music.youtube.com/search?q=Travis%20Scott%20Astroworld" rel="noopener" target="_blank">Astroworld</a></td></tr>
+<tr><td>Future</td><td><a href="https://music.youtube.com/search?q=Future%20DS2" rel="noopener" target="_blank">DS2</a></td></tr>
+<tr><td>Lil Wayne</td><td><a href="https://music.youtube.com/search?q=Lil%20Wayne%20Tha%20Carter%20III" rel="noopener" target="_blank">Tha Carter III</a></td></tr>
+<tr><td>Nicki Minaj</td><td><a href="https://music.youtube.com/search?q=Nicki%20Minaj%20The%20Pinkprint" rel="noopener" target="_blank">The Pinkprint</a></td></tr>
+<tr><td>Cardi B</td><td><a href="https://music.youtube.com/search?q=Cardi%20B%20Invasion%20of%20Privacy" rel="noopener" target="_blank">Invasion of Privacy</a></td></tr>
+<tr><td>Megan Thee Stallion</td><td><a href="https://music.youtube.com/search?q=Megan%20Thee%20Stallion%20Fever" rel="noopener" target="_blank">Fever</a></td></tr>
+<tr><td>Doja Cat</td><td><a href="https://music.youtube.com/search?q=Doja%20Cat%20Planet%20Her" rel="noopener" target="_blank">Planet Her</a></td></tr>
+<tr><td>Ice Spice</td><td><a href="https://music.youtube.com/search?q=Ice%20Spice%20Like..%3F" rel="noopener" target="_blank">Like..?</a></td></tr>
+<tr><td>Tyler, the Creator</td><td><a href="https://music.youtube.com/search?q=Tyler%2C%20the%20Creator%20IGOR" rel="noopener" target="_blank">IGOR</a></td></tr>
+<tr><td>Earl Sweatshirt</td><td><a href="https://music.youtube.com/search?q=Earl%20Sweatshirt%20Doris" rel="noopener" target="_blank">Doris</a></td></tr>
+<tr><td>Vince Staples</td><td><a href="https://music.youtube.com/search?q=Vince%20Staples%20Summertime%20%2706" rel="noopener" target="_blank">Summertime '06</a></td></tr>
+<tr><td>Mac Miller</td><td><a href="https://music.youtube.com/search?q=Mac%20Miller%20Swimming" rel="noopener" target="_blank">Swimming</a></td></tr>
+<tr><td>Logic</td><td><a href="https://music.youtube.com/search?q=Logic%20Under%20Pressure" rel="noopener" target="_blank">Under Pressure</a></td></tr>
+<tr><td>Joey Bada$$</td><td><a href="https://music.youtube.com/search?q=Joey%20Bada%24%24%201999" rel="noopener" target="_blank">1999</a></td></tr>
+<tr><td>A$AP Rocky</td><td><a href="https://music.youtube.com/search?q=A%24AP%20Rocky%20LONG.LIVE.A%24AP" rel="noopener" target="_blank">LONG.LIVE.A$AP</a></td></tr>
+<tr><td>A$AP Ferg</td><td><a href="https://music.youtube.com/search?q=A%24AP%20Ferg%20Trap%20Lord" rel="noopener" target="_blank">Trap Lord</a></td></tr>
+<tr><td>ScHoolboy Q</td><td><a href="https://music.youtube.com/search?q=ScHoolboy%20Q%20Oxymoron" rel="noopener" target="_blank">Oxymoron</a></td></tr>
+<tr><td>Ab-Soul</td><td><a href="https://music.youtube.com/search?q=Ab-Soul%20Control%20System" rel="noopener" target="_blank">Control System</a></td></tr>
+<tr><td>Jay Rock</td><td><a href="https://music.youtube.com/search?q=Jay%20Rock%2090059" rel="noopener" target="_blank">90059</a></td></tr>
+<tr><td>Tech N9ne</td><td><a href="https://music.youtube.com/search?q=Tech%20N9ne%20Anghellic" rel="noopener" target="_blank">Anghellic</a></td></tr>
+<tr><td>Mos Def (Yasiin Bey)</td><td><a href="https://music.youtube.com/search?q=Mos%20Def%20%28Yasiin%20Bey%29%20Black%20on%20Both%20Sides" rel="noopener" target="_blank">Black on Both Sides</a></td></tr>
+<tr><td>Talib Kweli</td><td><a href="https://music.youtube.com/search?q=Talib%20Kweli%20Quality" rel="noopener" target="_blank">Quality</a></td></tr>
+<tr><td>Black Star</td><td><a href="https://music.youtube.com/search?q=Black%20Star%20Mos%20Def%20%26%20Talib%20Kweli%20Are%20Black%20Star" rel="noopener" target="_blank">Mos Def &amp; Talib Kweli Are Black Star</a></td></tr>
+<tr><td>Common</td><td><a href="https://music.youtube.com/search?q=Common%20Be" rel="noopener" target="_blank">Be</a></td></tr>
+<tr><td>Kanye West (Ye)</td><td><a href="https://music.youtube.com/search?q=Kanye%20West%20%28Ye%29%20My%20Beautiful%20Dark%20Twisted%20Fantasy" rel="noopener" target="_blank">My Beautiful Dark Twisted Fantasy</a></td></tr>
+<tr><td>Pusha T</td><td><a href="https://music.youtube.com/search?q=Pusha%20T%20Daytona" rel="noopener" target="_blank">Daytona</a></td></tr>
+<tr><td>Clipse</td><td><a href="https://music.youtube.com/search?q=Clipse%20Hell%20Hath%20No%20Fury" rel="noopener" target="_blank">Hell Hath No Fury</a></td></tr>
+<tr><td>Pharrell Williams</td><td><a href="https://music.youtube.com/search?q=Pharrell%20Williams%20In%20My%20Mind" rel="noopener" target="_blank">In My Mind</a></td></tr>
+<tr><td>Lupe Fiasco</td><td><a href="https://music.youtube.com/search?q=Lupe%20Fiasco%20Food%20%26%20Liquor" rel="noopener" target="_blank">Food &amp; Liquor</a></td></tr>
+<tr><td>Kid Cudi</td><td><a href="https://music.youtube.com/search?q=Kid%20Cudi%20Man%20on%20the%20Moon%3A%20The%20End%20of%20Day" rel="noopener" target="_blank">Man on the Moon: The End of Day</a></td></tr>
+<tr><td>Big Sean</td><td><a href="https://music.youtube.com/search?q=Big%20Sean%20Dark%20Sky%20Paradise" rel="noopener" target="_blank">Dark Sky Paradise</a></td></tr>
+<tr><td>Wale</td><td><a href="https://music.youtube.com/search?q=Wale%20Ambition" rel="noopener" target="_blank">Ambition</a></td></tr>
+<tr><td>Rick Ross</td><td><a href="https://music.youtube.com/search?q=Rick%20Ross%20Teflon%20Don" rel="noopener" target="_blank">Teflon Don</a></td></tr>
+<tr><td>T.I.</td><td><a href="https://music.youtube.com/search?q=T.I.%20King" rel="noopener" target="_blank">King</a></td></tr>
+<tr><td>Ludacris</td><td><a href="https://music.youtube.com/search?q=Ludacris%20Word%20of%20Mouf" rel="noopener" target="_blank">Word of Mouf</a></td></tr>
+<tr><td>Jeezy</td><td><a href="https://music.youtube.com/search?q=Jeezy%20Let%27s%20Get%20It%3A%20Thug%20Motivation%20101" rel="noopener" target="_blank">Let's Get It: Thug Motivation 101</a></td></tr>
+<tr><td>Gucci Mane</td><td><a href="https://music.youtube.com/search?q=Gucci%20Mane%20The%20State%20vs.%20Radric%20Davis" rel="noopener" target="_blank">The State vs. Radric Davis</a></td></tr>
+<tr><td>Migos</td><td><a href="https://music.youtube.com/search?q=Migos%20Culture" rel="noopener" target="_blank">Culture</a></td></tr>
+<tr><td>Quavo</td><td><a href="https://music.youtube.com/search?q=Quavo%20Quavo%20Huncho" rel="noopener" target="_blank">Quavo Huncho</a></td></tr>
+<tr><td>Offset</td><td><a href="https://music.youtube.com/search?q=Offset%20Father%20of%204" rel="noopener" target="_blank">Father of 4</a></td></tr>
+<tr><td>Takeoff</td><td><a href="https://music.youtube.com/search?q=Takeoff%20The%20Last%20Rocket" rel="noopener" target="_blank">The Last Rocket</a></td></tr>
+<tr><td>Lil Uzi Vert</td><td><a href="https://music.youtube.com/search?q=Lil%20Uzi%20Vert%20Luv%20Is%20Rage%202" rel="noopener" target="_blank">Luv Is Rage 2</a></td></tr>
+<tr><td>Lil Yachty</td><td><a href="https://music.youtube.com/search?q=Lil%20Yachty%20Lil%20Boat" rel="noopener" target="_blank">Lil Boat</a></td></tr>
+<tr><td>21 Savage</td><td><a href="https://music.youtube.com/search?q=21%20Savage%20i%20am%20%3E%20i%20was" rel="noopener" target="_blank">i am &gt; i was</a></td></tr>
+<tr><td>Young Thug</td><td><a href="https://music.youtube.com/search?q=Young%20Thug%20So%20Much%20Fun" rel="noopener" target="_blank">So Much Fun</a></td></tr>
+<tr><td>Gunna</td><td><a href="https://music.youtube.com/search?q=Gunna%20Drip%20or%20Drown%202" rel="noopener" target="_blank">Drip or Drown 2</a></td></tr>
+<tr><td>Playboi Carti</td><td><a href="https://music.youtube.com/search?q=Playboi%20Carti%20Die%20Lit" rel="noopener" target="_blank">Die Lit</a></td></tr>
+<tr><td>Lil Baby</td><td><a href="https://music.youtube.com/search?q=Lil%20Baby%20My%20Turn" rel="noopener" target="_blank">My Turn</a></td></tr>
+<tr><td>DaBaby</td><td><a href="https://music.youtube.com/search?q=DaBaby%20KIRK" rel="noopener" target="_blank">KIRK</a></td></tr>
+<tr><td>Pop Smoke</td><td><a href="https://music.youtube.com/search?q=Pop%20Smoke%20Shoot%20for%20the%20Stars%2C%20Aim%20for%20the%20Moon" rel="noopener" target="_blank">Shoot for the Stars, Aim for the Moon</a></td></tr>
+<tr><td>Chief Keef</td><td><a href="https://music.youtube.com/search?q=Chief%20Keef%20Finally%20Rich" rel="noopener" target="_blank">Finally Rich</a></td></tr>
+<tr><td>G Herbo</td><td><a href="https://music.youtube.com/search?q=G%20Herbo%20PTSD" rel="noopener" target="_blank">PTSD</a></td></tr>
+<tr><td>Polo G</td><td><a href="https://music.youtube.com/search?q=Polo%20G%20Die%20a%20Legend" rel="noopener" target="_blank">Die a Legend</a></td></tr>
+<tr><td>Chance the Rapper</td><td><a href="https://music.youtube.com/search?q=Chance%20the%20Rapper%20Acid%20Rap" rel="noopener" target="_blank">Acid Rap</a></td></tr>
+<tr><td>DJ Khaled</td><td><a href="https://music.youtube.com/search?q=DJ%20Khaled%20Major%20Key" rel="noopener" target="_blank">Major Key</a></td></tr>
+<tr><td>The Roots</td><td><a href="https://music.youtube.com/search?q=The%20Roots%20Things%20Fall%20Apart" rel="noopener" target="_blank">Things Fall Apart</a></td></tr>
+<tr><td>Black Thought</td><td><a href="https://music.youtube.com/search?q=Black%20Thought%20Streams%20of%20Thought%2C%20Vol.%203" rel="noopener" target="_blank">Streams of Thought, Vol. 3</a></td></tr>
+<tr><td>Cypress Hill</td><td><a href="https://music.youtube.com/search?q=Cypress%20Hill%20Cypress%20Hill" rel="noopener" target="_blank">Cypress Hill</a></td></tr>
+<tr><td>Ice-T</td><td><a href="https://music.youtube.com/search?q=Ice-T%20Original%20Gangster" rel="noopener" target="_blank">Original Gangster</a></td></tr>
+<tr><td>Too Short</td><td><a href="https://music.youtube.com/search?q=Too%20Short%20Life%20Is...Too%20Short" rel="noopener" target="_blank">Life Is...Too Short</a></td></tr>
+<tr><td>E-40</td><td><a href="https://music.youtube.com/search?q=E-40%20In%20a%20Major%20Way" rel="noopener" target="_blank">In a Major Way</a></td></tr>
+<tr><td>Mac Dre</td><td><a href="https://music.youtube.com/search?q=Mac%20Dre%20Ronald%20Dregan" rel="noopener" target="_blank">Ronald Dregan</a></td></tr>
+<tr><td>Del the Funky Homosapien</td><td><a href="https://music.youtube.com/search?q=Del%20the%20Funky%20Homosapien%20No%20Need%20for%20Alarm" rel="noopener" target="_blank">No Need for Alarm</a></td></tr>
+<tr><td>Hieroglyphics</td><td><a href="https://music.youtube.com/search?q=Hieroglyphics%203rd%20Eye%20Vision" rel="noopener" target="_blank">3rd Eye Vision</a></td></tr>
+<tr><td>MF DOOM</td><td><a href="https://music.youtube.com/search?q=MF%20DOOM%20MM..Food" rel="noopener" target="_blank">MM..Food</a></td></tr>
+<tr><td>Madvillain</td><td><a href="https://music.youtube.com/search?q=Madvillain%20Madvillainy" rel="noopener" target="_blank">Madvillainy</a></td></tr>
+<tr><td>Madlib</td><td><a href="https://music.youtube.com/search?q=Madlib%20Shades%20of%20Blue" rel="noopener" target="_blank">Shades of Blue</a></td></tr>
+<tr><td>J Dilla</td><td><a href="https://music.youtube.com/search?q=J%20Dilla%20Donuts" rel="noopener" target="_blank">Donuts</a></td></tr>
+<tr><td>Slum Village</td><td><a href="https://music.youtube.com/search?q=Slum%20Village%20Fantastic%2C%20Vol.%202" rel="noopener" target="_blank">Fantastic, Vol. 2</a></td></tr>
+<tr><td>Big Pun</td><td><a href="https://music.youtube.com/search?q=Big%20Pun%20Capital%20Punishment" rel="noopener" target="_blank">Capital Punishment</a></td></tr>
+<tr><td>Fat Joe</td><td><a href="https://music.youtube.com/search?q=Fat%20Joe%20Jealous%20One%27s%20Envy" rel="noopener" target="_blank">Jealous One's Envy</a></td></tr>
+<tr><td>Terror Squad</td><td><a href="https://music.youtube.com/search?q=Terror%20Squad%20True%20Story" rel="noopener" target="_blank">True Story</a></td></tr>
+<tr><td>Remy Ma</td><td><a href="https://music.youtube.com/search?q=Remy%20Ma%20There%27s%20Something%20About%20Remy" rel="noopener" target="_blank">There's Something About Remy</a></td></tr>
+<tr><td>Fabolous</td><td><a href="https://music.youtube.com/search?q=Fabolous%20Ghetto%20Fabolous" rel="noopener" target="_blank">Ghetto Fabolous</a></td></tr>
+<tr><td>Jadakiss</td><td><a href="https://music.youtube.com/search?q=Jadakiss%20Kiss%20of%20Death" rel="noopener" target="_blank">Kiss of Death</a></td></tr>
+<tr><td>The LOX</td><td><a href="https://music.youtube.com/search?q=The%20LOX%20We%20Are%20the%20Streets" rel="noopener" target="_blank">We Are the Streets</a></td></tr>
+<tr><td>Styles P</td><td><a href="https://music.youtube.com/search?q=Styles%20P%20A%20Gangster%20and%20a%20Gentleman" rel="noopener" target="_blank">A Gangster and a Gentleman</a></td></tr>
+<tr><td>Cam'ron</td><td><a href="https://music.youtube.com/search?q=Cam%27ron%20Come%20Home%20with%20Me" rel="noopener" target="_blank">Come Home with Me</a></td></tr>
+<tr><td>The Diplomats (Dipset)</td><td><a href="https://music.youtube.com/search?q=The%20Diplomats%20%28Dipset%29%20Diplomatic%20Immunity" rel="noopener" target="_blank">Diplomatic Immunity</a></td></tr>
+<tr><td>Ma$e</td><td><a href="https://music.youtube.com/search?q=Ma%24e%20Harlem%20World" rel="noopener" target="_blank">Harlem World</a></td></tr>
+<tr><td>Q-Tip</td><td><a href="https://music.youtube.com/search?q=Q-Tip%20Amplified" rel="noopener" target="_blank">Amplified</a></td></tr>
+<tr><td>Phife Dawg</td><td><a href="https://music.youtube.com/search?q=Phife%20Dawg%20Ventilation%3A%20Da%20LP" rel="noopener" target="_blank">Ventilation: Da LP</a></td></tr>
+<tr><td>Naughty by Nature</td><td><a href="https://music.youtube.com/search?q=Naughty%20by%20Nature%20Naughty%20by%20Nature" rel="noopener" target="_blank">Naughty by Nature</a></td></tr>
+<tr><td>Bone Thugs-N-Harmony</td><td><a href="https://music.youtube.com/search?q=Bone%20Thugs-N-Harmony%20E.%201999%20Eternal" rel="noopener" target="_blank">E. 1999 Eternal</a></td></tr>
+<tr><td>Warren G</td><td><a href="https://music.youtube.com/search?q=Warren%20G%20Regulate...%20G%20Funk%20Era" rel="noopener" target="_blank">Regulate... G Funk Era</a></td></tr>
+<tr><td>Nate Dogg</td><td><a href="https://music.youtube.com/search?q=Nate%20Dogg%20Music%20%26%20Me" rel="noopener" target="_blank">Music &amp; Me</a></td></tr>
+<tr><td>Lauryn Hill</td><td><a href="https://music.youtube.com/search?q=Lauryn%20Hill%20The%20Miseducation%20of%20Lauryn%20Hill" rel="noopener" target="_blank">The Miseducation of Lauryn Hill</a></td></tr>
+<tr><td>Fugees</td><td><a href="https://music.youtube.com/search?q=Fugees%20The%20Score" rel="noopener" target="_blank">The Score</a></td></tr>
+<tr><td>Missy Elliott</td><td><a href="https://music.youtube.com/search?q=Missy%20Elliott%20Supa%20Dupa%20Fly" rel="noopener" target="_blank">Supa Dupa Fly</a></td></tr>
+<tr><td>Salt-N-Pepa</td><td><a href="https://music.youtube.com/search?q=Salt-N-Pepa%20Very%20Necessary" rel="noopener" target="_blank">Very Necessary</a></td></tr>
+<tr><td>Queen Latifah</td><td><a href="https://music.youtube.com/search?q=Queen%20Latifah%20Black%20Reign" rel="noopener" target="_blank">Black Reign</a></td></tr>
+<tr><td>Lil' Kim</td><td><a href="https://music.youtube.com/search?q=Lil%27%20Kim%20Hard%20Core" rel="noopener" target="_blank">Hard Core</a></td></tr>
+<tr><td>Foxy Brown</td><td><a href="https://music.youtube.com/search?q=Foxy%20Brown%20Ill%20Na%20Na" rel="noopener" target="_blank">Ill Na Na</a></td></tr>
+<tr><td>Trina</td><td><a href="https://music.youtube.com/search?q=Trina%20Da%20Baddest%20B%2A%2A%2A%2A" rel="noopener" target="_blank">Da Baddest B****</a></td></tr>
+<tr><td>Eve</td><td><a href="https://music.youtube.com/search?q=Eve%20Scorpion" rel="noopener" target="_blank">Scorpion</a></td></tr>
+<tr><td>Rapsody</td><td><a href="https://music.youtube.com/search?q=Rapsody%20Laila%27s%20Wisdom" rel="noopener" target="_blank">Laila's Wisdom</a></td></tr>
+<tr><td>Noname</td><td><a href="https://music.youtube.com/search?q=Noname%20Room%2025" rel="noopener" target="_blank">Room 25</a></td></tr>
+<tr><td>Little Simz</td><td><a href="https://music.youtube.com/search?q=Little%20Simz%20Sometimes%20I%20Might%20Be%20Introvert" rel="noopener" target="_blank">Sometimes I Might Be Introvert</a></td></tr>
+<tr><td>Skepta</td><td><a href="https://music.youtube.com/search?q=Skepta%20Konnichiwa" rel="noopener" target="_blank">Konnichiwa</a></td></tr>
+<tr><td>Stormzy</td><td><a href="https://music.youtube.com/search?q=Stormzy%20Gang%20Signs%20%26%20Prayer" rel="noopener" target="_blank">Gang Signs &amp; Prayer</a></td></tr>
+<tr><td>Dave</td><td><a href="https://music.youtube.com/search?q=Dave%20Psychodrama" rel="noopener" target="_blank">Psychodrama</a></td></tr>
+<tr><td>AJ Tracey</td><td><a href="https://music.youtube.com/search?q=AJ%20Tracey%20AJ%20Tracey" rel="noopener" target="_blank">AJ Tracey</a></td></tr>
+<tr><td>Kano</td><td><a href="https://music.youtube.com/search?q=Kano%20Made%20in%20the%20Manor" rel="noopener" target="_blank">Made in the Manor</a></td></tr>
+<tr><td>Dizzee Rascal</td><td><a href="https://music.youtube.com/search?q=Dizzee%20Rascal%20Boy%20in%20da%20Corner" rel="noopener" target="_blank">Boy in da Corner</a></td></tr>
+<tr><td>Giggs</td><td><a href="https://music.youtube.com/search?q=Giggs%20Landlord" rel="noopener" target="_blank">Landlord</a></td></tr>
+<tr><td>Tinie Tempah</td><td><a href="https://music.youtube.com/search?q=Tinie%20Tempah%20Disc-Overy" rel="noopener" target="_blank">Disc-Overy</a></td></tr>
+<tr><td>J Hus</td><td><a href="https://music.youtube.com/search?q=J%20Hus%20Common%20Sense" rel="noopener" target="_blank">Common Sense</a></td></tr>
+<tr><td>Central Cee</td><td><a href="https://music.youtube.com/search?q=Central%20Cee%2023" rel="noopener" target="_blank">23</a></td></tr>
+<tr><td>IAM</td><td><a href="https://music.youtube.com/search?q=IAM%20L%27%C3%A9cole%20du%20micro%20d%27argent" rel="noopener" target="_blank">L'école du micro d'argent</a></td></tr>
+<tr><td>MC Solaar</td><td><a href="https://music.youtube.com/search?q=MC%20Solaar%20Prose%20Combat" rel="noopener" target="_blank">Prose Combat</a></td></tr>
+<tr><td>Booba</td><td><a href="https://music.youtube.com/search?q=Booba%20Temps%20mort" rel="noopener" target="_blank">Temps mort</a></td></tr>
+<tr><td>Kaaris</td><td><a href="https://music.youtube.com/search?q=Kaaris%20Or%20Noir" rel="noopener" target="_blank">Or Noir</a></td></tr>
+<tr><td>PNL</td><td><a href="https://music.youtube.com/search?q=PNL%20Dans%20la%20l%C3%A9gende" rel="noopener" target="_blank">Dans la légende</a></td></tr>
+<tr><td>NTM</td><td><a href="https://music.youtube.com/search?q=NTM%20Supr%C3%AAme%20NTM" rel="noopener" target="_blank">Suprême NTM</a></td></tr>
+<tr><td>Orelsan</td><td><a href="https://music.youtube.com/search?q=Orelsan%20La%20f%C3%AAte%20est%20finie" rel="noopener" target="_blank">La fête est finie</a></td></tr>
+<tr><td>Ninho</td><td><a href="https://music.youtube.com/search?q=Ninho%20Destin" rel="noopener" target="_blank">Destin</a></td></tr>
+<tr><td>SCH</td><td><a href="https://music.youtube.com/search?q=SCH%20Anarchie" rel="noopener" target="_blank">Anarchie</a></td></tr>
+<tr><td>Kase.O</td><td><a href="https://music.youtube.com/search?q=Kase.O%20El%20c%C3%ADrculo" rel="noopener" target="_blank">El círculo</a></td></tr>
+<tr><td>Violadores del Verso</td><td><a href="https://music.youtube.com/search?q=Violadores%20del%20Verso%20Vivir%20para%20contarlo" rel="noopener" target="_blank">Vivir para contarlo</a></td></tr>
+<tr><td>Nach</td><td><a href="https://music.youtube.com/search?q=Nach%20Poes%C3%ADa%20Difusa" rel="noopener" target="_blank">Poesía Difusa</a></td></tr>
+<tr><td>SFDK</td><td><a href="https://music.youtube.com/search?q=SFDK%20Siempre%20Fuertes%202" rel="noopener" target="_blank">Siempre Fuertes 2</a></td></tr>
+<tr><td>Natos y Waor</td><td><a href="https://music.youtube.com/search?q=Natos%20y%20Waor%20Cicatrices" rel="noopener" target="_blank">Cicatrices</a></td></tr>
+<tr><td>ToteKing</td><td><a href="https://music.youtube.com/search?q=ToteKing%20Lechuga" rel="noopener" target="_blank">Lechuga</a></td></tr>
+<tr><td>Residente</td><td><a href="https://music.youtube.com/search?q=Residente%20Residente" rel="noopener" target="_blank">Residente</a></td></tr>
+<tr><td>Calle 13</td><td><a href="https://music.youtube.com/search?q=Calle%2013%20Residente%20o%20Visitante" rel="noopener" target="_blank">Residente o Visitante</a></td></tr>
+<tr><td>Vico C</td><td><a href="https://music.youtube.com/search?q=Vico%20C%20Aquel%20Que%20Hab%C3%ADa%20Muerto" rel="noopener" target="_blank">Aquel Que Había Muerto</a></td></tr>
+<tr><td>Tego Calderón</td><td><a href="https://music.youtube.com/search?q=Tego%20Calder%C3%B3n%20El%20Abayarde" rel="noopener" target="_blank">El Abayarde</a></td></tr>
+<tr><td>Daddy Yankee</td><td><a href="https://music.youtube.com/search?q=Daddy%20Yankee%20Barrio%20Fino" rel="noopener" target="_blank">Barrio Fino</a></td></tr>
+<tr><td>C-Kan</td><td><a href="https://music.youtube.com/search?q=C-Kan%20Clasificaci%C3%B3n%20C" rel="noopener" target="_blank">Clasificación C</a></td></tr>
+<tr><td>Cartel de Santa</td><td><a href="https://music.youtube.com/search?q=Cartel%20de%20Santa%20Vol.%20IV" rel="noopener" target="_blank">Vol. IV</a></td></tr>
+<tr><td>Santa Fe Klan</td><td><a href="https://music.youtube.com/search?q=Santa%20Fe%20Klan%20Santa%20Cumbia" rel="noopener" target="_blank">Santa Cumbia</a></td></tr>
+<tr><td>Alemán</td><td><a href="https://music.youtube.com/search?q=Alem%C3%A1n%20Humo%20en%20la%20Trampa" rel="noopener" target="_blank">Humo en la Trampa</a></td></tr>
+<tr><td>Gera MX</td><td><a href="https://music.youtube.com/search?q=Gera%20MX%20El%20Vicio%20y%20la%20Fama" rel="noopener" target="_blank">El Vicio y la Fama</a></td></tr>
+<tr><td>Aczino</td><td><a href="https://music.youtube.com/search?q=Aczino%20Aczino%202018" rel="noopener" target="_blank">Aczino 2018</a></td></tr>
+<tr><td>Lng/SHT</td><td><a href="https://music.youtube.com/search?q=Lng/SHT%20Hip%20Hop%20Para%20Adultos" rel="noopener" target="_blank">Hip Hop Para Adultos</a></td></tr>
+<tr><td>Dharius</td><td><a href="https://music.youtube.com/search?q=Dharius%20Directo%20Hasta%20Arriba" rel="noopener" target="_blank">Directo Hasta Arriba</a></td></tr>
+<tr><td>Control Machete</td><td><a href="https://music.youtube.com/search?q=Control%20Machete%20Mucho%20Barato" rel="noopener" target="_blank">Mucho Barato</a></td></tr>
+<tr><td>Molotov</td><td><a href="https://music.youtube.com/search?q=Molotov%20%C2%BFD%C3%B3nde%20Jugar%C3%A1n%20las%20Ni%C3%B1as%3F" rel="noopener" target="_blank">¿Dónde Jugarán las Niñas?</a></td></tr>
+<tr><td>Porta</td><td><a href="https://music.youtube.com/search?q=Porta%20No%20es%20cuesti%C3%B3n%20de%20edades" rel="noopener" target="_blank">No es cuestión de edades</a></td></tr>
+<tr><td>Khea</td><td><a href="https://music.youtube.com/search?q=Khea%20Trapicheo" rel="noopener" target="_blank">Trapicheo</a></td></tr>
+<tr><td>Duki</td><td><a href="https://music.youtube.com/search?q=Duki%20Desde%20el%20Fin%20del%20Mundo" rel="noopener" target="_blank">Desde el Fin del Mundo</a></td></tr>
+<tr><td>WOS</td><td><a href="https://music.youtube.com/search?q=WOS%20Caravana" rel="noopener" target="_blank">Caravana</a></td></tr>
+<tr><td>Trueno</td><td><a href="https://music.youtube.com/search?q=Trueno%20Atrevido" rel="noopener" target="_blank">Atrevido</a></td></tr>
+<tr><td>Bizarrap</td><td><a href="https://music.youtube.com/search?q=Bizarrap%20BZRP%20Music%20Sessions%2C%20Vol.%2036" rel="noopener" target="_blank">BZRP Music Sessions, Vol. 36</a></td></tr>
+<tr><td>Nicky Jam</td><td><a href="https://music.youtube.com/search?q=Nicky%20Jam%20Fen%C3%B3menos" rel="noopener" target="_blank">Fenómenos</a></td></tr>
+<tr><td>Anuel AA</td><td><a href="https://music.youtube.com/search?q=Anuel%20AA%20Real%20Hasta%20la%20Muerte" rel="noopener" target="_blank">Real Hasta la Muerte</a></td></tr>
+<tr><td>Bad Bunny</td><td><a href="https://music.youtube.com/search?q=Bad%20Bunny%20X%20100PRE" rel="noopener" target="_blank">X 100PRE</a></td></tr>
+<tr><td>Eladio Carrión</td><td><a href="https://music.youtube.com/search?q=Eladio%20Carri%C3%B3n%20Monarca" rel="noopener" target="_blank">Monarca</a></td></tr>
+<tr><td>Racionais MC's</td><td><a href="https://music.youtube.com/search?q=Racionais%20MC%27s%20Sobrevivendo%20no%20Inferno" rel="noopener" target="_blank">Sobrevivendo no Inferno</a></td></tr>
+<tr><td>Emicida</td><td><a href="https://music.youtube.com/search?q=Emicida%20Sobre%20Crian%C3%A7as%2C%20Quadris%2C%20Pesadelos%20e%20Li%C3%A7%C3%B5es%20de%20Casa" rel="noopener" target="_blank">Sobre Crianças, Quadris, Pesadelos e Lições de Casa</a></td></tr>
+<tr><td>Criolo</td><td><a href="https://music.youtube.com/search?q=Criolo%20N%C3%B3%20na%20Orelha" rel="noopener" target="_blank">Nó na Orelha</a></td></tr>
+<tr><td>Epik High</td><td><a href="https://music.youtube.com/search?q=Epik%20High%20Swan%20Songs" rel="noopener" target="_blank">Swan Songs</a></td></tr>
+<tr><td>Jay Park</td><td><a href="https://music.youtube.com/search?q=Jay%20Park%20Everything%20You%20Wanted" rel="noopener" target="_blank">Everything You Wanted</a></td></tr>
+<tr><td>Zico</td><td><a href="https://music.youtube.com/search?q=Zico%20Thinking" rel="noopener" target="_blank">Thinking</a></td></tr>
+<tr><td>Beenzino</td><td><a href="https://music.youtube.com/search?q=Beenzino%2012" rel="noopener" target="_blank">12</a></td></tr>
+<tr><td>Dok2</td><td><a href="https://music.youtube.com/search?q=Dok2%20Multillionaire" rel="noopener" target="_blank">Multillionaire</a></td></tr>
+<tr><td>The Quiett</td><td><a href="https://music.youtube.com/search?q=The%20Quiett%20AMBITIQN" rel="noopener" target="_blank">AMBITIQN</a></td></tr>
+<tr><td>Nujabes</td><td><a href="https://music.youtube.com/search?q=Nujabes%20Modal%20Soul" rel="noopener" target="_blank">Modal Soul</a></td></tr>
+<tr><td>Shing02</td><td><a href="https://music.youtube.com/search?q=Shing02%20Waikyoku" rel="noopener" target="_blank">Waikyoku</a></td></tr>
+<tr><td>Rhymester</td><td><a href="https://music.youtube.com/search?q=Rhymester%20Manifesto" rel="noopener" target="_blank">Manifesto</a></td></tr>
+<tr><td>KOHH</td><td><a href="https://music.youtube.com/search?q=KOHH%20DIRT" rel="noopener" target="_blank">DIRT</a></td></tr>
+<tr><td>Kreva</td><td><a href="https://music.youtube.com/search?q=Kreva%20GO" rel="noopener" target="_blank">GO</a></td></tr>
+<tr><td>Sarkodie</td><td><a href="https://music.youtube.com/search?q=Sarkodie%20Rapperholic" rel="noopener" target="_blank">Rapperholic</a></td></tr>
+<tr><td>M.anifest</td><td><a href="https://music.youtube.com/search?q=M.anifest%20Nowhere%20Cool" rel="noopener" target="_blank">Nowhere Cool</a></td></tr>
+<tr><td>AKA</td><td><a href="https://music.youtube.com/search?q=AKA%20Levels" rel="noopener" target="_blank">Levels</a></td></tr>
+<tr><td>Cassper Nyovest</td><td><a href="https://music.youtube.com/search?q=Cassper%20Nyovest%20Thuto" rel="noopener" target="_blank">Thuto</a></td></tr>
+<tr><td>Nasty C</td><td><a href="https://music.youtube.com/search?q=Nasty%20C%20Strings%20and%20Bling" rel="noopener" target="_blank">Strings and Bling</a></td></tr>
+<tr><td>Sampa the Great</td><td><a href="https://music.youtube.com/search?q=Sampa%20the%20Great%20The%20Return" rel="noopener" target="_blank">The Return</a></td></tr>
+<tr><td>Brother Ali</td><td><a href="https://music.youtube.com/search?q=Brother%20Ali%20Shadows%20on%20the%20Sun" rel="noopener" target="_blank">Shadows on the Sun</a></td></tr>
+<tr><td>Atmosphere</td><td><a href="https://music.youtube.com/search?q=Atmosphere%20God%20Loves%20Ugly" rel="noopener" target="_blank">God Loves Ugly</a></td></tr>
+<tr><td>Aesop Rock</td><td><a href="https://music.youtube.com/search?q=Aesop%20Rock%20Labor%20Days" rel="noopener" target="_blank">Labor Days</a></td></tr>
+<tr><td>El-P</td><td><a href="https://music.youtube.com/search?q=El-P%20Cancer%204%20Cure" rel="noopener" target="_blank">Cancer 4 Cure</a></td></tr>
+<tr><td>Killer Mike</td><td><a href="https://music.youtube.com/search?q=Killer%20Mike%20R.A.P.%20Music" rel="noopener" target="_blank">R.A.P. Music</a></td></tr>
+<tr><td>Run the Jewels</td><td><a href="https://music.youtube.com/search?q=Run%20the%20Jewels%20Run%20the%20Jewels%202" rel="noopener" target="_blank">Run the Jewels 2</a></td></tr>
+<tr><td>Sage Francis</td><td><a href="https://music.youtube.com/search?q=Sage%20Francis%20Personal%20Journals" rel="noopener" target="_blank">Personal Journals</a></td></tr>
+<tr><td>Immortal Technique</td><td><a href="https://music.youtube.com/search?q=Immortal%20Technique%20Revolutionary%20Vol.%202" rel="noopener" target="_blank">Revolutionary Vol. 2</a></td></tr>
+<tr><td>Jedi Mind Tricks</td><td><a href="https://music.youtube.com/search?q=Jedi%20Mind%20Tricks%20Violent%20by%20Design" rel="noopener" target="_blank">Violent by Design</a></td></tr>
+<tr><td>Vinnie Paz</td><td><a href="https://music.youtube.com/search?q=Vinnie%20Paz%20God%20of%20the%20Serengeti" rel="noopener" target="_blank">God of the Serengeti</a></td></tr>
+<tr><td>Army of the Pharaohs</td><td><a href="https://music.youtube.com/search?q=Army%20of%20the%20Pharaohs%20Ritual%20of%20Battle" rel="noopener" target="_blank">Ritual of Battle</a></td></tr>
+<tr><td>Evidence</td><td><a href="https://music.youtube.com/search?q=Evidence%20The%20Weatherman%20LP" rel="noopener" target="_blank">The Weatherman LP</a></td></tr>
+<tr><td>Dilated Peoples</td><td><a href="https://music.youtube.com/search?q=Dilated%20Peoples%20Expansion%20Team" rel="noopener" target="_blank">Expansion Team</a></td></tr>
+<tr><td>Freddie Gibbs</td><td><a href="https://music.youtube.com/search?q=Freddie%20Gibbs%20Bandana" rel="noopener" target="_blank">Bandana</a></td></tr>
+<tr><td>MadGibbs (Gibbs &amp; Madlib)</td><td><a href="https://music.youtube.com/search?q=MadGibbs%20%28Gibbs%20%26%20Madlib%29%20Pi%C3%B1ata" rel="noopener" target="_blank">Piñata</a></td></tr>
+<tr><td>Danny Brown</td><td><a href="https://music.youtube.com/search?q=Danny%20Brown%20Atrocity%20Exhibition" rel="noopener" target="_blank">Atrocity Exhibition</a></td></tr>
+<tr><td>JPEGMAFIA</td><td><a href="https://music.youtube.com/search?q=JPEGMAFIA%20All%20My%20Heroes%20Are%20Cornballs" rel="noopener" target="_blank">All My Heroes Are Cornballs</a></td></tr>
+<tr><td>Denzel Curry</td><td><a href="https://music.youtube.com/search?q=Denzel%20Curry%20TA13OO" rel="noopener" target="_blank">TA13OO</a></td></tr>
+<tr><td>Mick Jenkins</td><td><a href="https://music.youtube.com/search?q=Mick%20Jenkins%20The%20Water%5Bs%5D" rel="noopener" target="_blank">The Water[s]</a></td></tr>
+<tr><td>Isaiah Rashad</td><td><a href="https://music.youtube.com/search?q=Isaiah%20Rashad%20The%20Sun%27s%20Tirade" rel="noopener" target="_blank">The Sun's Tirade</a></td></tr>
+<tr><td>Rae Sremmurd</td><td><a href="https://music.youtube.com/search?q=Rae%20Sremmurd%20SremmLife" rel="noopener" target="_blank">SremmLife</a></td></tr>
+<tr><td>Logic</td><td><a href="https://music.youtube.com/search?q=Logic%20No%20Pressure" rel="noopener" target="_blank">No Pressure</a></td></tr>
+<tr><td>Cordae</td><td><a href="https://music.youtube.com/search?q=Cordae%20The%20Lost%20Boy" rel="noopener" target="_blank">The Lost Boy</a></td></tr>
+<tr><td>Tyga</td><td><a href="https://music.youtube.com/search?q=Tyga%20Careless%20World" rel="noopener" target="_blank">Careless World</a></td></tr>
+<tr><td>Kid Ink</td><td><a href="https://music.youtube.com/search?q=Kid%20Ink%20My%20Own%20Lane" rel="noopener" target="_blank">My Own Lane</a></td></tr>
+<tr><td>Nipsey Hussle</td><td><a href="https://music.youtube.com/search?q=Nipsey%20Hussle%20Victory%20Lap" rel="noopener" target="_blank">Victory Lap</a></td></tr>
+<tr><td>YG</td><td><a href="https://music.youtube.com/search?q=YG%20My%20Krazy%20Life" rel="noopener" target="_blank">My Krazy Life</a></td></tr>
+<tr><td>Blueface</td><td><a href="https://music.youtube.com/search?q=Blueface%20Famous%20Cryp" rel="noopener" target="_blank">Famous Cryp</a></td></tr>
+<tr><td>Busta Rhymes</td><td><a href="https://music.youtube.com/search?q=Busta%20Rhymes%20The%20Coming" rel="noopener" target="_blank">The Coming</a></td></tr>
+<tr><td>Q-Tip</td><td><a href="https://music.youtube.com/search?q=Q-Tip%20The%20Renaissance" rel="noopener" target="_blank">The Renaissance</a></td></tr>
+<tr><td>GZA</td><td><a href="https://music.youtube.com/search?q=GZA%20Beneath%20the%20Surface" rel="noopener" target="_blank">Beneath the Surface</a></td></tr>
+<tr><td>Blackalicious</td><td><a href="https://music.youtube.com/search?q=Blackalicious%20Blazing%20Arrow" rel="noopener" target="_blank">Blazing Arrow</a></td></tr>
+<tr><td>Pete Rock &amp; C.L. Smooth</td><td><a href="https://music.youtube.com/search?q=Pete%20Rock%20%26%20C.L.%20Smooth%20Mecca%20and%20the%20Soul%20Brother" rel="noopener" target="_blank">Mecca and the Soul Brother</a></td></tr>
+<tr><td>Big L</td><td><a href="https://music.youtube.com/search?q=Big%20L%20Lifestylez%20ov%20da%20Poor%20%26%20Dangerous" rel="noopener" target="_blank">Lifestylez ov da Poor &amp; Dangerous</a></td></tr>
+<tr><td>Kool G Rap</td><td><a href="https://music.youtube.com/search?q=Kool%20G%20Rap%204%2C5%2C6" rel="noopener" target="_blank">4,5,6</a></td></tr>
+<tr><td>Slick Rick</td><td><a href="https://music.youtube.com/search?q=Slick%20Rick%20The%20Great%20Adventures%20of%20Slick%20Rick" rel="noopener" target="_blank">The Great Adventures of Slick Rick</a></td></tr>
+<tr><td>Big K.R.I.T.</td><td><a href="https://music.youtube.com/search?q=Big%20K.R.I.T.%20Return%20of%204Eva" rel="noopener" target="_blank">Return of 4Eva</a></td></tr>
+<tr><td>Curren$y</td><td><a href="https://music.youtube.com/search?q=Curren%24y%20Pilot%20Talk" rel="noopener" target="_blank">Pilot Talk</a></td></tr>
+<tr><td>Joell Ortiz</td><td><a href="https://music.youtube.com/search?q=Joell%20Ortiz%20Free%20Agent" rel="noopener" target="_blank">Free Agent</a></td></tr>
+<tr><td>Royce da 5'9"</td><td><a href="https://music.youtube.com/search?q=Royce%20da%205%279%22%20Book%20of%20Ryan" rel="noopener" target="_blank">Book of Ryan</a></td></tr>
+<tr><td>PRhyme (Royce &amp; DJ Premier)</td><td><a href="https://music.youtube.com/search?q=PRhyme%20%28Royce%20%26%20DJ%20Premier%29%20PRhyme" rel="noopener" target="_blank">PRhyme</a></td></tr>
+<tr><td>DJ Premier</td><td><a href="https://music.youtube.com/search?q=DJ%20Premier%20Beats%20That%20Collected%20Dust" rel="noopener" target="_blank">Beats That Collected Dust</a></td></tr>
+<tr><td>Gang Starr</td><td><a href="https://music.youtube.com/search?q=Gang%20Starr%20Moment%20of%20Truth" rel="noopener" target="_blank">Moment of Truth</a></td></tr>
+<tr><td>The Pharcyde</td><td><a href="https://music.youtube.com/search?q=The%20Pharcyde%20Bizarre%20Ride%20II%20the%20Pharcyde" rel="noopener" target="_blank">Bizarre Ride II the Pharcyde</a></td></tr>
+<tr><td>Souls of Mischief</td><td><a href="https://music.youtube.com/search?q=Souls%20of%20Mischief%2093%20%27til%20Infinity" rel="noopener" target="_blank">93 'til Infinity</a></td></tr>
+<tr><td>Black Moon</td><td><a href="https://music.youtube.com/search?q=Black%20Moon%20Enta%20da%20Stage" rel="noopener" target="_blank">Enta da Stage</a></td></tr>
+<tr><td>Smif-N-Wessun</td><td><a href="https://music.youtube.com/search?q=Smif-N-Wessun%20Dah%20Shinin%27" rel="noopener" target="_blank">Dah Shinin'</a></td></tr>
+<tr><td>M.O.P.</td><td><a href="https://music.youtube.com/search?q=M.O.P.%20Warriorz" rel="noopener" target="_blank">Warriorz</a></td></tr>
+<tr><td>Onyx</td><td><a href="https://music.youtube.com/search?q=Onyx%20Bacdafucup" rel="noopener" target="_blank">Bacdafucup</a></td></tr>
+<tr><td>Digital Underground</td><td><a href="https://music.youtube.com/search?q=Digital%20Underground%20Sex%20Packets" rel="noopener" target="_blank">Sex Packets</a></td></tr>
+<tr><td>Arrested Development</td><td><a href="https://music.youtube.com/search?q=Arrested%20Development%203%20Years%2C%205%20Months%20%26%202%20Days..." rel="noopener" target="_blank">3 Years, 5 Months &amp; 2 Days...</a></td></tr>
+<tr><td>A Boogie wit da Hoodie</td><td><a href="https://music.youtube.com/search?q=A%20Boogie%20wit%20da%20Hoodie%20Hoodie%20SZN" rel="noopener" target="_blank">Hoodie SZN</a></td></tr>
+<tr><td>Meek Mill</td><td><a href="https://music.youtube.com/search?q=Meek%20Mill%20Dreams%20and%20Nightmares" rel="noopener" target="_blank">Dreams and Nightmares</a></td></tr>
+<tr><td>Fetty Wap</td><td><a href="https://music.youtube.com/search?q=Fetty%20Wap%20Fetty%20Wap" rel="noopener" target="_blank">Fetty Wap</a></td></tr>
+<tr><td>Flo Rida</td><td><a href="https://music.youtube.com/search?q=Flo%20Rida%20R.O.O.T.S." rel="noopener" target="_blank">R.O.O.T.S.</a></td></tr>
+<tr><td>Pitbull</td><td><a href="https://music.youtube.com/search?q=Pitbull%20Rebelution" rel="noopener" target="_blank">Rebelution</a></td></tr>
+<tr><td>Waka Flocka Flame</td><td><a href="https://music.youtube.com/search?q=Waka%20Flocka%20Flame%20Flockaveli" rel="noopener" target="_blank">Flockaveli</a></td></tr>
+<tr><td>Wiz Khalifa</td><td><a href="https://music.youtube.com/search?q=Wiz%20Khalifa%20Kush%20%26%20Orange%20Juice" rel="noopener" target="_blank">Kush &amp; Orange Juice</a></td></tr>
+<tr><td>Juicy J</td><td><a href="https://music.youtube.com/search?q=Juicy%20J%20Stay%20Trippy" rel="noopener" target="_blank">Stay Trippy</a></td></tr>
+<tr><td>Three 6 Mafia</td><td><a href="https://music.youtube.com/search?q=Three%206%20Mafia%20When%20the%20Smoke%20Clears" rel="noopener" target="_blank">When the Smoke Clears</a></td></tr>
+<tr><td>Project Pat</td><td><a href="https://music.youtube.com/search?q=Project%20Pat%20Mista%20Don%27t%20Play" rel="noopener" target="_blank">Mista Don't Play</a></td></tr>
+<tr><td>UGK</td><td><a href="https://music.youtube.com/search?q=UGK%20Ridin%27%20Dirty" rel="noopener" target="_blank">Ridin' Dirty</a></td></tr>
+<tr><td>Bun B</td><td><a href="https://music.youtube.com/search?q=Bun%20B%20Trill%20OG" rel="noopener" target="_blank">Trill OG</a></td></tr>
+<tr><td>Pimp C</td><td><a href="https://music.youtube.com/search?q=Pimp%20C%20Pimpalation" rel="noopener" target="_blank">Pimpalation</a></td></tr>
+<tr><td>Scarface</td><td><a href="https://music.youtube.com/search?q=Scarface%20The%20Diary" rel="noopener" target="_blank">The Diary</a></td></tr>
+<tr><td>Geto Boys</td><td><a href="https://music.youtube.com/search?q=Geto%20Boys%20We%20Can%27t%20Be%20Stopped" rel="noopener" target="_blank">We Can't Be Stopped</a></td></tr>
+<tr><td>Devin the Dude</td><td><a href="https://music.youtube.com/search?q=Devin%20the%20Dude%20Just%20Tryin%27%20ta%20Live" rel="noopener" target="_blank">Just Tryin' ta Live</a></td></tr>
+<tr><td>Afroman</td><td><a href="https://music.youtube.com/search?q=Afroman%20The%20Good%20Times" rel="noopener" target="_blank">The Good Times</a></td></tr>
+<tr><td>Xzibit</td><td><a href="https://music.youtube.com/search?q=Xzibit%20Restless" rel="noopener" target="_blank">Restless</a></td></tr>
+<tr><td>Nate Dogg (solo)</td><td><a href="https://music.youtube.com/search?q=Nate%20Dogg%20%28solo%29%20G-Funk%20Classics%2C%20Vol.%201%20%26%202" rel="noopener" target="_blank">G-Funk Classics, Vol. 1 &amp; 2</a></td></tr>
+<tr><td>Warren G (solo)</td><td><a href="https://music.youtube.com/search?q=Warren%20G%20%28solo%29%20Take%20a%20Look%20Over%20Your%20Shoulder" rel="noopener" target="_blank">Take a Look Over Your Shoulder</a></td></tr>
+<tr><td>The D.O.C.</td><td><a href="https://music.youtube.com/search?q=The%20D.O.C.%20No%20One%20Can%20Do%20It%20Better" rel="noopener" target="_blank">No One Can Do It Better</a></td></tr>
+<tr><td>BROCKHAMPTON</td><td><a href="https://music.youtube.com/search?q=BROCKHAMPTON%20Saturation%20II" rel="noopener" target="_blank">Saturation II</a></td></tr>
+<tr><td>Flatbush Zombies</td><td><a href="https://music.youtube.com/search?q=Flatbush%20Zombies%203001%3A%20A%20Laced%20Odyssey" rel="noopener" target="_blank">3001: A Laced Odyssey</a></td></tr>
+<tr><td>Beast Coast</td><td><a href="https://music.youtube.com/search?q=Beast%20Coast%20Escape%20from%20New%20York" rel="noopener" target="_blank">Escape from New York</a></td></tr>
+<tr><td>Pro Era</td><td><a href="https://music.youtube.com/search?q=Pro%20Era%20PEEP%3A%20The%20aPROcalypse" rel="noopener" target="_blank">PEEP: The aPROcalypse</a></td></tr>
+<tr><td>Odd Future</td><td><a href="https://music.youtube.com/search?q=Odd%20Future%20The%20OF%20Tape%20Vol.%202" rel="noopener" target="_blank">The OF Tape Vol. 2</a></td></tr>
+<tr><td>Earl Sweatshirt (alt)</td><td><a href="https://music.youtube.com/search?q=Earl%20Sweatshirt%20%28alt%29%20Some%20Rap%20Songs" rel="noopener" target="_blank">Some Rap Songs</a></td></tr>
+<tr><td>B.o.B</td><td><a href="https://music.youtube.com/search?q=B.o.B%20The%20Adventures%20of%20Bobby%20Ray" rel="noopener" target="_blank">The Adventures of Bobby Ray</a></td></tr>
+<tr><td>Hopsin</td><td><a href="https://music.youtube.com/search?q=Hopsin%20Raw" rel="noopener" target="_blank">Raw</a></td></tr>
+<tr><td>Token</td><td><a href="https://music.youtube.com/search?q=Token%20Between%20Somewhere" rel="noopener" target="_blank">Between Somewhere</a></td></tr>
+<tr><td>NF</td><td><a href="https://music.youtube.com/search?q=NF%20Perception" rel="noopener" target="_blank">Perception</a></td></tr>
+<tr><td>G-Eazy</td><td><a href="https://music.youtube.com/search?q=G-Eazy%20When%20It%27s%20Dark%20Out" rel="noopener" target="_blank">When It's Dark Out</a></td></tr>
+<tr><td>Machine Gun Kelly</td><td><a href="https://music.youtube.com/search?q=Machine%20Gun%20Kelly%20General%20Admission" rel="noopener" target="_blank">General Admission</a></td></tr>
+<tr><td>Yelawolf</td><td><a href="https://music.youtube.com/search?q=Yelawolf%20Trunk%20Muzik%200-60" rel="noopener" target="_blank">Trunk Muzik 0-60</a></td></tr>
+<tr><td>Aminé</td><td><a href="https://music.youtube.com/search?q=Amin%C3%A9%20Good%20for%20You" rel="noopener" target="_blank">Good for You</a></td></tr>
+<tr><td>GoldLink</td><td><a href="https://music.youtube.com/search?q=GoldLink%20At%20What%20Cost" rel="noopener" target="_blank">At What Cost</a></td></tr>
+<tr><td>Kyle</td><td><a href="https://music.youtube.com/search?q=Kyle%20Light%20of%20Mine" rel="noopener" target="_blank">Light of Mine</a></td></tr>
+<tr><td>Rich Brian</td><td><a href="https://music.youtube.com/search?q=Rich%20Brian%20Amen" rel="noopener" target="_blank">Amen</a></td></tr>
+<tr><td>Joji</td><td><a href="https://music.youtube.com/search?q=Joji%20BALLADS%201" rel="noopener" target="_blank">BALLADS 1</a></td></tr>
+<tr><td>Ty Dolla $ign</td><td><a href="https://music.youtube.com/search?q=Ty%20Dolla%20%24ign%20Free%20TC" rel="noopener" target="_blank">Free TC</a></td></tr>
+<tr><td>Post Malone</td><td><a href="https://music.youtube.com/search?q=Post%20Malone%20Stoney" rel="noopener" target="_blank">Stoney</a></td></tr>
+<tr><td>Lil Nas X</td><td><a href="https://music.youtube.com/search?q=Lil%20Nas%20X%20Montero" rel="noopener" target="_blank">Montero</a></td></tr>
+<tr><td>Lil Peep</td><td><a href="https://music.youtube.com/search?q=Lil%20Peep%20Come%20Over%20When%20You%27re%20Sober%2C%20Pt.%201" rel="noopener" target="_blank">Come Over When You're Sober, Pt. 1</a></td></tr>
+<tr><td>XXXTentacion</td><td><a href="https://music.youtube.com/search?q=XXXTentacion%2017" rel="noopener" target="_blank">17</a></td></tr>
+<tr><td>Ski Mask The Slump God</td><td><a href="https://music.youtube.com/search?q=Ski%20Mask%20The%20Slump%20God%20Beware%20the%20Book%20of%20Eli" rel="noopener" target="_blank">Beware the Book of Eli</a></td></tr>
+<tr><td>Smokepurpp</td><td><a href="https://music.youtube.com/search?q=Smokepurpp%20Bless%20Yo%20Trap" rel="noopener" target="_blank">Bless Yo Trap</a></td></tr>
+<tr><td>Famous Dex</td><td><a href="https://music.youtube.com/search?q=Famous%20Dex%20Dex%20Meets%20Dexter" rel="noopener" target="_blank">Dex Meets Dexter</a></td></tr>
+<tr><td>NAV</td><td><a href="https://music.youtube.com/search?q=NAV%20Reckless" rel="noopener" target="_blank">Reckless</a></td></tr>
+<tr><td>Metro Boomin</td><td><a href="https://music.youtube.com/search?q=Metro%20Boomin%20Not%20All%20Heroes%20Wear%20Capes" rel="noopener" target="_blank">Not All Heroes Wear Capes</a></td></tr>
+<tr><td>Mike WiLL Made-It</td><td><a href="https://music.youtube.com/search?q=Mike%20WiLL%20Made-It%20Ransom%202" rel="noopener" target="_blank">Ransom 2</a></td></tr>
+<tr><td>Mustard</td><td><a href="https://music.youtube.com/search?q=Mustard%2010%20Summers" rel="noopener" target="_blank">10 Summers</a></td></tr>
+<tr><td>DJ Shadow</td><td><a href="https://music.youtube.com/search?q=DJ%20Shadow%20Endtroducing....." rel="noopener" target="_blank">Endtroducing.....</a></td></tr>
+<tr><td>The Avalanches</td><td><a href="https://music.youtube.com/search?q=The%20Avalanches%20Since%20I%20Left%20You" rel="noopener" target="_blank">Since I Left You</a></td></tr>
+<tr><td>A Tribe Called Quest (alt)</td><td><a href="https://music.youtube.com/search?q=A%20Tribe%20Called%20Quest%20%28alt%29%20Midnight%20Marauders" rel="noopener" target="_blank">Midnight Marauders</a></td></tr>
+<tr><td>Beastie Boys (alt)</td><td><a href="https://music.youtube.com/search?q=Beastie%20Boys%20%28alt%29%20Licensed%20to%20Ill" rel="noopener" target="_blank">Licensed to Ill</a></td></tr>
+<tr><td>Run the Jewels (alt)</td><td><a href="https://music.youtube.com/search?q=Run%20the%20Jewels%20%28alt%29%20RTJ4" rel="noopener" target="_blank">RTJ4</a></td></tr>
+<tr><td>Public Enemy (alt)</td><td><a href="https://music.youtube.com/search?q=Public%20Enemy%20%28alt%29%20Fear%20of%20a%20Black%20Planet" rel="noopener" target="_blank">Fear of a Black Planet</a></td></tr>
+<tr><td>OutKast (alt)</td><td><a href="https://music.youtube.com/search?q=OutKast%20%28alt%29%20Stankonia" rel="noopener" target="_blank">Stankonia</a></td></tr>
+<tr><td>Kanye West (alt)</td><td><a href="https://music.youtube.com/search?q=Kanye%20West%20%28alt%29%20Graduation" rel="noopener" target="_blank">Graduation</a></td></tr>
+<tr><td>Drake (alt)</td><td><a href="https://music.youtube.com/search?q=Drake%20%28alt%29%20Nothing%20Was%20the%20Same" rel="noopener" target="_blank">Nothing Was the Same</a></td></tr>
+<tr><td>J. Cole (alt)</td><td><a href="https://music.youtube.com/search?q=J.%20Cole%20%28alt%29%20KOD" rel="noopener" target="_blank">KOD</a></td></tr>
+<tr><td>Kendrick Lamar (alt)</td><td><a href="https://music.youtube.com/search?q=Kendrick%20Lamar%20%28alt%29%20good%20kid%2C%20m.A.A.d%20city" rel="noopener" target="_blank">good kid, m.A.A.d city</a></td></tr>
+<tr><td>Logic (alt)</td><td><a href="https://music.youtube.com/search?q=Logic%20%28alt%29%20Under%20Pressure" rel="noopener" target="_blank">Under Pressure</a></td></tr>
+<tr><td>Big Sean (alt)</td><td><a href="https://music.youtube.com/search?q=Big%20Sean%20%28alt%29%20I%20Decided." rel="noopener" target="_blank">I Decided.</a></td></tr>
+<tr><td>Pusha T (alt)</td><td><a href="https://music.youtube.com/search?q=Pusha%20T%20%28alt%29%20It%27s%20Almost%20Dry" rel="noopener" target="_blank">It's Almost Dry</a></td></tr>
+<tr><td>Tyler, The Creator (alt)</td><td><a href="https://music.youtube.com/search?q=Tyler%2C%20The%20Creator%20%28alt%29%20CALL%20ME%20IF%20YOU%20GET%20LOST" rel="noopener" target="_blank">CALL ME IF YOU GET LOST</a></td></tr>
+<tr><td>Travis Scott (alt)</td><td><a href="https://music.youtube.com/search?q=Travis%20Scott%20%28alt%29%20Rodeo" rel="noopener" target="_blank">Rodeo</a></td></tr>
+<tr><td>Future (alt)</td><td><a href="https://music.youtube.com/search?q=Future%20%28alt%29%20HNDRXX" rel="noopener" target="_blank">HNDRXX</a></td></tr>
+<tr><td>Lil Wayne (alt)</td><td><a href="https://music.youtube.com/search?q=Lil%20Wayne%20%28alt%29%20Tha%20Carter%20II" rel="noopener" target="_blank">Tha Carter II</a></td></tr>
+<tr><td>Nicki Minaj (alt)</td><td><a href="https://music.youtube.com/search?q=Nicki%20Minaj%20%28alt%29%20Queen" rel="noopener" target="_blank">Queen</a></td></tr>
+<tr><td>Cardi B (alt)</td><td><a href="https://music.youtube.com/search?q=Cardi%20B%20%28alt%29%20Gangsta%20Bitch%20Music%2C%20Vol.%201" rel="noopener" target="_blank">Gangsta Bitch Music, Vol. 1</a></td></tr>
+<tr><td>Megan Thee Stallion (alt)</td><td><a href="https://music.youtube.com/search?q=Megan%20Thee%20Stallion%20%28alt%29%20Traumazine" rel="noopener" target="_blank">Traumazine</a></td></tr>
+<tr><td>Doja Cat (alt)</td><td><a href="https://music.youtube.com/search?q=Doja%20Cat%20%28alt%29%20Hot%20Pink" rel="noopener" target="_blank">Hot Pink</a></td></tr>
+<tr><td>A$AP Rocky (alt)</td><td><a href="https://music.youtube.com/search?q=A%24AP%20Rocky%20%28alt%29%20AT.LONG.LAST.A%24AP" rel="noopener" target="_blank">AT.LONG.LAST.A$AP</a></td></tr>
+<tr><td>Vince Staples (alt)</td><td><a href="https://music.youtube.com/search?q=Vince%20Staples%20%28alt%29%20FM%21" rel="noopener" target="_blank">FM!</a></td></tr>
+<tr><td>Mac Miller (alt)</td><td><a href="https://music.youtube.com/search?q=Mac%20Miller%20%28alt%29%20GO%3AOD%20AM" rel="noopener" target="_blank">GO:OD AM</a></td></tr>
+<tr><td>Joey Bada$$ (alt)</td><td><a href="https://music.youtube.com/search?q=Joey%20Bada%24%24%20%28alt%29%20ALL-AMERIKKKAN%20BADA%24%24" rel="noopener" target="_blank">ALL-AMERIKKKAN BADA$$</a></td></tr>
+<tr><td>Wale (alt)</td><td><a href="https://music.youtube.com/search?q=Wale%20%28alt%29%20The%20Gifted" rel="noopener" target="_blank">The Gifted</a></td></tr>
+<tr><td>Rick Ross (alt)</td><td><a href="https://music.youtube.com/search?q=Rick%20Ross%20%28alt%29%20Rather%20You%20Than%20Me" rel="noopener" target="_blank">Rather You Than Me</a></td></tr>
+<tr><td>Gucci Mane (alt)</td><td><a href="https://music.youtube.com/search?q=Gucci%20Mane%20%28alt%29%20Everybody%20Looking" rel="noopener" target="_blank">Everybody Looking</a></td></tr>
+<tr><td>Jeezy (alt)</td><td><a href="https://music.youtube.com/search?q=Jeezy%20%28alt%29%20The%20Recession" rel="noopener" target="_blank">The Recession</a></td></tr>
+<tr><td>T.I. (alt)</td><td><a href="https://music.youtube.com/search?q=T.I.%20%28alt%29%20Paper%20Trail" rel="noopener" target="_blank">Paper Trail</a></td></tr>
+<tr><td>Ludacris (alt)</td><td><a href="https://music.youtube.com/search?q=Ludacris%20%28alt%29%20Chicken-n-Beer" rel="noopener" target="_blank">Chicken-n-Beer</a></td></tr>
+<tr><td>Kid Cudi (alt)</td><td><a href="https://music.youtube.com/search?q=Kid%20Cudi%20%28alt%29%20Man%20on%20the%20Moon%20II" rel="noopener" target="_blank">Man on the Moon II</a></td></tr>
+<tr><td>Lupe Fiasco (alt)</td><td><a href="https://music.youtube.com/search?q=Lupe%20Fiasco%20%28alt%29%20The%20Cool" rel="noopener" target="_blank">The Cool</a></td></tr>
+<tr><td>Mos Def (alt)</td><td><a href="https://music.youtube.com/search?q=Mos%20Def%20%28alt%29%20The%20Ecstatic" rel="noopener" target="_blank">The Ecstatic</a></td></tr>
+<tr><td>Talib Kweli (alt)</td><td><a href="https://music.youtube.com/search?q=Talib%20Kweli%20%28alt%29%20Eardrum" rel="noopener" target="_blank">Eardrum</a></td></tr>
+<tr><td>Common (alt)</td><td><a href="https://music.youtube.com/search?q=Common%20%28alt%29%20Like%20Water%20for%20Chocolate" rel="noopener" target="_blank">Like Water for Chocolate</a></td></tr>
+<tr><td>Pharrell Williams (alt)</td><td><a href="https://music.youtube.com/search?q=Pharrell%20Williams%20%28alt%29%20G%20I%20R%20L" rel="noopener" target="_blank">G I R L</a></td></tr>
+<tr><td>Clipse (alt)</td><td><a href="https://music.youtube.com/search?q=Clipse%20%28alt%29%20Lord%20Willin%27" rel="noopener" target="_blank">Lord Willin'</a></td></tr>
+<tr><td>Tech N9ne (alt)</td><td><a href="https://music.youtube.com/search?q=Tech%20N9ne%20%28alt%29%20K.O.D." rel="noopener" target="_blank">K.O.D.</a></td></tr>
+<tr><td>Ab-Soul (alt)</td><td><a href="https://music.youtube.com/search?q=Ab-Soul%20%28alt%29%20HERBERT" rel="noopener" target="_blank">HERBERT</a></td></tr>
+<tr><td>ScHoolboy Q (alt)</td><td><a href="https://music.youtube.com/search?q=ScHoolboy%20Q%20%28alt%29%20Blank%20Face%20LP" rel="noopener" target="_blank">Blank Face LP</a></td></tr>
+<tr><td>Jay Rock (alt)</td><td><a href="https://music.youtube.com/search?q=Jay%20Rock%20%28alt%29%20Redemption" rel="noopener" target="_blank">Redemption</a></td></tr>
+<tr><td>A$AP Ferg (alt)</td><td><a href="https://music.youtube.com/search?q=A%24AP%20Ferg%20%28alt%29%20Still%20Striving" rel="noopener" target="_blank">Still Striving</a></td></tr>
+<tr><td>Pop Smoke (alt)</td><td><a href="https://music.youtube.com/search?q=Pop%20Smoke%20%28alt%29%20Meet%20the%20Woo%202" rel="noopener" target="_blank">Meet the Woo 2</a></td></tr>
+<tr><td>21 Savage (alt)</td><td><a href="https://music.youtube.com/search?q=21%20Savage%20%28alt%29%20Savage%20Mode%20II" rel="noopener" target="_blank">Savage Mode II</a></td></tr>
+<tr><td>Young Thug (alt)</td><td><a href="https://music.youtube.com/search?q=Young%20Thug%20%28alt%29%20Jeffery" rel="noopener" target="_blank">Jeffery</a></td></tr>
+<tr><td>Gunna (alt)</td><td><a href="https://music.youtube.com/search?q=Gunna%20%28alt%29%20WUNNA" rel="noopener" target="_blank">WUNNA</a></td></tr>
+<tr><td>Playboi Carti (alt)</td><td><a href="https://music.youtube.com/search?q=Playboi%20Carti%20%28alt%29%20Whole%20Lotta%20Red" rel="noopener" target="_blank">Whole Lotta Red</a></td></tr>
+<tr><td>Lil Uzi Vert (alt)</td><td><a href="https://music.youtube.com/search?q=Lil%20Uzi%20Vert%20%28alt%29%20Eternal%20Atake" rel="noopener" target="_blank">Eternal Atake</a></td></tr>
+<tr><td>Lil Yachty (alt)</td><td><a href="https://music.youtube.com/search?q=Lil%20Yachty%20%28alt%29%20Nuthin%27%202%20Prove" rel="noopener" target="_blank">Nuthin' 2 Prove</a></td></tr>
+<tr><td>Lil Baby (alt)</td><td><a href="https://music.youtube.com/search?q=Lil%20Baby%20%28alt%29%20Harder%20Than%20Ever" rel="noopener" target="_blank">Harder Than Ever</a></td></tr>
+<tr><td>DaBaby (alt)</td><td><a href="https://music.youtube.com/search?q=DaBaby%20%28alt%29%20Baby%20on%20Baby" rel="noopener" target="_blank">Baby on Baby</a></td></tr>
+<tr><td>RZA</td><td><a href="https://music.youtube.com/search?q=RZA%20Bobby%20Digital%20in%20Stereo" rel="noopener" target="_blank">Bobby Digital in Stereo</a></td></tr>
+<tr><td>Inspectah Deck</td><td><a href="https://music.youtube.com/search?q=Inspectah%20Deck%20Uncontrolled%20Substance" rel="noopener" target="_blank">Uncontrolled Substance</a></td></tr>
+<tr><td>Cappadonna</td><td><a href="https://music.youtube.com/search?q=Cappadonna%20The%20Pillage" rel="noopener" target="_blank">The Pillage</a></td></tr>
+<tr><td>U-God</td><td><a href="https://music.youtube.com/search?q=U-God%20Golden%20Arms%20Redemption" rel="noopener" target="_blank">Golden Arms Redemption</a></td></tr>
+<tr><td>Killah Priest</td><td><a href="https://music.youtube.com/search?q=Killah%20Priest%20Heavy%20Mental" rel="noopener" target="_blank">Heavy Mental</a></td></tr>
+<tr><td>AZ</td><td><a href="https://music.youtube.com/search?q=AZ%20Doe%20or%20Die" rel="noopener" target="_blank">Doe or Die</a></td></tr>
+<tr><td>Cormega</td><td><a href="https://music.youtube.com/search?q=Cormega%20The%20Realness" rel="noopener" target="_blank">The Realness</a></td></tr>
+<tr><td>Nature</td><td><a href="https://music.youtube.com/search?q=Nature%20For%20All%20Seasons" rel="noopener" target="_blank">For All Seasons</a></td></tr>
+<tr><td>Capone-N-Noreaga</td><td><a href="https://music.youtube.com/search?q=Capone-N-Noreaga%20The%20War%20Report" rel="noopener" target="_blank">The War Report</a></td></tr>
+<tr><td>N.O.R.E.</td><td><a href="https://music.youtube.com/search?q=N.O.R.E.%20N.O.R.E." rel="noopener" target="_blank">N.O.R.E.</a></td></tr>
+<tr><td>Black Sheep</td><td><a href="https://music.youtube.com/search?q=Black%20Sheep%20A%20Wolf%20in%20Sheep%27s%20Clothing" rel="noopener" target="_blank">A Wolf in Sheep's Clothing</a></td></tr>
+<tr><td>Jungle Brothers</td><td><a href="https://music.youtube.com/search?q=Jungle%20Brothers%20Done%20by%20the%20Forces%20of%20Nature" rel="noopener" target="_blank">Done by the Forces of Nature</a></td></tr>
+<tr><td>Brand Nubian</td><td><a href="https://music.youtube.com/search?q=Brand%20Nubian%20One%20for%20All" rel="noopener" target="_blank">One for All</a></td></tr>
+<tr><td>Lord Finesse</td><td><a href="https://music.youtube.com/search?q=Lord%20Finesse%20Return%20of%20the%20Funky%20Man" rel="noopener" target="_blank">Return of the Funky Man</a></td></tr>
+<tr><td>O.C.</td><td><a href="https://music.youtube.com/search?q=O.C.%20Word...Life" rel="noopener" target="_blank">Word...Life</a></td></tr>
+<tr><td>D.I.T.C.</td><td><a href="https://music.youtube.com/search?q=D.I.T.C.%20D.I.T.C." rel="noopener" target="_blank">D.I.T.C.</a></td></tr>
+<tr><td>Diamond D</td><td><a href="https://music.youtube.com/search?q=Diamond%20D%20Stunts%2C%20Blunts%20and%20Hip%20Hop" rel="noopener" target="_blank">Stunts, Blunts and Hip Hop</a></td></tr>
+<tr><td>Big Noyd</td><td><a href="https://music.youtube.com/search?q=Big%20Noyd%20Episodes%20of%20a%20Hustla" rel="noopener" target="_blank">Episodes of a Hustla</a></td></tr>
+<tr><td>Jeru the Damaja</td><td><a href="https://music.youtube.com/search?q=Jeru%20the%20Damaja%20The%20Sun%20Rises%20in%20the%20East" rel="noopener" target="_blank">The Sun Rises in the East</a></td></tr>
+<tr><td>Group Home</td><td><a href="https://music.youtube.com/search?q=Group%20Home%20Livin%27%20Proof" rel="noopener" target="_blank">Livin' Proof</a></td></tr>
+<tr><td>Das EFX</td><td><a href="https://music.youtube.com/search?q=Das%20EFX%20Dead%20Serious" rel="noopener" target="_blank">Dead Serious</a></td></tr>
+<tr><td>Lords of the Underground</td><td><a href="https://music.youtube.com/search?q=Lords%20of%20the%20Underground%20Here%20Come%20the%20Lords" rel="noopener" target="_blank">Here Come the Lords</a></td></tr>
+<tr><td>Nice &amp; Smooth</td><td><a href="https://music.youtube.com/search?q=Nice%20%26%20Smooth%20Ain%27t%20a%20Damn%20Thing%20Changed" rel="noopener" target="_blank">Ain't a Damn Thing Changed</a></td></tr>
+<tr><td>Main Source</td><td><a href="https://music.youtube.com/search?q=Main%20Source%20Breaking%20Atoms" rel="noopener" target="_blank">Breaking Atoms</a></td></tr>
+<tr><td>Large Professor</td><td><a href="https://music.youtube.com/search?q=Large%20Professor%20The%20LP" rel="noopener" target="_blank">The LP</a></td></tr>
+<tr><td>Kool Keith</td><td><a href="https://music.youtube.com/search?q=Kool%20Keith%20Dr.%20Octagonecologyst" rel="noopener" target="_blank">Dr. Octagonecologyst</a></td></tr>
+<tr><td>Ultramagnetic MC's</td><td><a href="https://music.youtube.com/search?q=Ultramagnetic%20MC%27s%20Critical%20Beatdown" rel="noopener" target="_blank">Critical Beatdown</a></td></tr>
+<tr><td>The Beatnuts</td><td><a href="https://music.youtube.com/search?q=The%20Beatnuts%20Street%20Level" rel="noopener" target="_blank">Street Level</a></td></tr>
+<tr><td>Pete Rock</td><td><a href="https://music.youtube.com/search?q=Pete%20Rock%20Soul%20Survivor" rel="noopener" target="_blank">Soul Survivor</a></td></tr>
+<tr><td>C.L. Smooth</td><td><a href="https://music.youtube.com/search?q=C.L.%20Smooth%20American%20Me" rel="noopener" target="_blank">American Me</a></td></tr>
+<tr><td>Maseo &amp; Posdnuos (as De La projects)</td><td><a href="https://music.youtube.com/search?q=Maseo%20%26%20Posdnuos%20%28as%20De%20La%20projects%29%20Art%20Official%20Intelligence" rel="noopener" target="_blank">Art Official Intelligence</a></td></tr>
+<tr><td>Pharoahe Monch</td><td><a href="https://music.youtube.com/search?q=Pharoahe%20Monch%20Internal%20Affairs" rel="noopener" target="_blank">Internal Affairs</a></td></tr>
+<tr><td>Organized Konfusion</td><td><a href="https://music.youtube.com/search?q=Organized%20Konfusion%20Stress%3A%20The%20Extinction%20Agenda" rel="noopener" target="_blank">Stress: The Extinction Agenda</a></td></tr>
+<tr><td>Cannibal Ox</td><td><a href="https://music.youtube.com/search?q=Cannibal%20Ox%20The%20Cold%20Vein" rel="noopener" target="_blank">The Cold Vein</a></td></tr>
+<tr><td>Company Flow</td><td><a href="https://music.youtube.com/search?q=Company%20Flow%20Funcrusher%20Plus" rel="noopener" target="_blank">Funcrusher Plus</a></td></tr>
+<tr><td>Cage</td><td><a href="https://music.youtube.com/search?q=Cage%20Hell%27s%20Winter" rel="noopener" target="_blank">Hell's Winter</a></td></tr>
+<tr><td>Non Phixion</td><td><a href="https://music.youtube.com/search?q=Non%20Phixion%20The%20Future%20Is%20Now" rel="noopener" target="_blank">The Future Is Now</a></td></tr>
+<tr><td>La Coka Nostra</td><td><a href="https://music.youtube.com/search?q=La%20Coka%20Nostra%20A%20Brand%20You%20Can%20Trust" rel="noopener" target="_blank">A Brand You Can Trust</a></td></tr>
+<tr><td>Griselda</td><td><a href="https://music.youtube.com/search?q=Griselda%20WWCD" rel="noopener" target="_blank">WWCD</a></td></tr>
+<tr><td>Westside Gunn</td><td><a href="https://music.youtube.com/search?q=Westside%20Gunn%20Flygod" rel="noopener" target="_blank">Flygod</a></td></tr>
+<tr><td>Conway the Machine</td><td><a href="https://music.youtube.com/search?q=Conway%20the%20Machine%20From%20King%20to%20a%20GOD" rel="noopener" target="_blank">From King to a GOD</a></td></tr>
+<tr><td>Benny the Butcher</td><td><a href="https://music.youtube.com/search?q=Benny%20the%20Butcher%20Tana%20Talk%203" rel="noopener" target="_blank">Tana Talk 3</a></td></tr>
+<tr><td>Boldy James</td><td><a href="https://music.youtube.com/search?q=Boldy%20James%20The%20Price%20of%20Tea%20in%20China" rel="noopener" target="_blank">The Price of Tea in China</a></td></tr>
+<tr><td>The Alchemist</td><td><a href="https://music.youtube.com/search?q=The%20Alchemist%20Israeli%20Salad" rel="noopener" target="_blank">Israeli Salad</a></td></tr>
+<tr><td>Apollo Brown</td><td><a href="https://music.youtube.com/search?q=Apollo%20Brown%20Clouds" rel="noopener" target="_blank">Clouds</a></td></tr>
+<tr><td>Skyzoo</td><td><a href="https://music.youtube.com/search?q=Skyzoo%20Music%20for%20My%20Friends" rel="noopener" target="_blank">Music for My Friends</a></td></tr>
+<tr><td>Murs</td><td><a href="https://music.youtube.com/search?q=Murs%20Murs%203%3A16%3A%20The%209th%20Edition" rel="noopener" target="_blank">Murs 3:16: The 9th Edition</a></td></tr>
+<tr><td>The Grouch</td><td><a href="https://music.youtube.com/search?q=The%20Grouch%20Show%20You%20the%20World" rel="noopener" target="_blank">Show You the World</a></td></tr>
+<tr><td>Eligh</td><td><a href="https://music.youtube.com/search?q=Eligh%20Therapy%20at%203" rel="noopener" target="_blank">Therapy at 3</a></td></tr>
+<tr><td>People Under the Stairs</td><td><a href="https://music.youtube.com/search?q=People%20Under%20the%20Stairs%20O.S.T." rel="noopener" target="_blank">O.S.T.</a></td></tr>
+<tr><td>Blu</td><td><a href="https://music.youtube.com/search?q=Blu%20Below%20the%20Heavens" rel="noopener" target="_blank">Below the Heavens</a></td></tr>
+<tr><td>Blu &amp; Exile</td><td><a href="https://music.youtube.com/search?q=Blu%20%26%20Exile%20Below%20the%20Heavens" rel="noopener" target="_blank">Below the Heavens</a></td></tr>
+<tr><td>Evidence (solo)</td><td><a href="https://music.youtube.com/search?q=Evidence%20%28solo%29%20Weather%20or%20Not" rel="noopener" target="_blank">Weather or Not</a></td></tr>
+<tr><td>Marlon Craft</td><td><a href="https://music.youtube.com/search?q=Marlon%20Craft%20Funhouse%20Mirror" rel="noopener" target="_blank">Funhouse Mirror</a></td></tr>
+<tr><td>Kota the Friend</td><td><a href="https://music.youtube.com/search?q=Kota%20the%20Friend%20Anything." rel="noopener" target="_blank">Anything.</a></td></tr>
+<tr><td>Domo Genesis</td><td><a href="https://music.youtube.com/search?q=Domo%20Genesis%20Genesis" rel="noopener" target="_blank">Genesis</a></td></tr>
+<tr><td>Hodgy</td><td><a href="https://music.youtube.com/search?q=Hodgy%20Fireplace%3A%20TheNotTheOtherSide" rel="noopener" target="_blank">Fireplace: TheNotTheOtherSide</a></td></tr>
+<tr><td>Dom Kennedy</td><td><a href="https://music.youtube.com/search?q=Dom%20Kennedy%20From%20the%20Westside%20with%20Love%20II" rel="noopener" target="_blank">From the Westside with Love II</a></td></tr>
+<tr><td>Casey Veggies</td><td><a href="https://music.youtube.com/search?q=Casey%20Veggies%20Sleeping%20in%20Class" rel="noopener" target="_blank">Sleeping in Class</a></td></tr>
+<tr><td>Problem</td><td><a href="https://music.youtube.com/search?q=Problem%20The%20Separation" rel="noopener" target="_blank">The Separation</a></td></tr>
+<tr><td>Nipsey Hussle (early)</td><td><a href="https://music.youtube.com/search?q=Nipsey%20Hussle%20%28early%29%20The%20Marathon" rel="noopener" target="_blank">The Marathon</a></td></tr>
+<tr><td>Chuuwee</td><td><a href="https://music.youtube.com/search?q=Chuuwee%20Wildstyle" rel="noopener" target="_blank">Wildstyle</a></td></tr>
+<tr><td>Open Mike Eagle</td><td><a href="https://music.youtube.com/search?q=Open%20Mike%20Eagle%20Brick%20Body%20Kids%20Still%20Daydream" rel="noopener" target="_blank">Brick Body Kids Still Daydream</a></td></tr>
+<tr><td>Homeboy Sandman</td><td><a href="https://music.youtube.com/search?q=Homeboy%20Sandman%20First%20of%20a%20Living%20Breed" rel="noopener" target="_blank">First of a Living Breed</a></td></tr>
+<tr><td>Eyedea &amp; Abilities</td><td><a href="https://music.youtube.com/search?q=Eyedea%20%26%20Abilities%20E%26A" rel="noopener" target="_blank">E&amp;A</a></td></tr>
+<tr><td>P.O.S</td><td><a href="https://music.youtube.com/search?q=P.O.S%20Never%20Better" rel="noopener" target="_blank">Never Better</a></td></tr>
+<tr><td>Dessa</td><td><a href="https://music.youtube.com/search?q=Dessa%20Parts%20of%20Speech" rel="noopener" target="_blank">Parts of Speech</a></td></tr>
+<tr><td>Prof</td><td><a href="https://music.youtube.com/search?q=Prof%20Liability" rel="noopener" target="_blank">Liability</a></td></tr>
+<tr><td>Atmosphere (alt)</td><td><a href="https://music.youtube.com/search?q=Atmosphere%20%28alt%29%20When%20Life%20Gives%20You%20Lemons..." rel="noopener" target="_blank">When Life Gives You Lemons...</a></td></tr>
+<tr><td>Saba</td><td><a href="https://music.youtube.com/search?q=Saba%20Care%20for%20Me" rel="noopener" target="_blank">Care for Me</a></td></tr>
+<tr><td>Smino</td><td><a href="https://music.youtube.com/search?q=Smino%20NOIR" rel="noopener" target="_blank">NOIR</a></td></tr>
+<tr><td>Saba &amp; Noname collab</td><td><a href="https://music.youtube.com/search?q=Saba%20%26%20Noname%20collab%20Room%2025%20%28collab%29" rel="noopener" target="_blank">Room 25 (collab)</a></td></tr>
+<tr><td>G Herbo (alt)</td><td><a href="https://music.youtube.com/search?q=G%20Herbo%20%28alt%29%20Ballin%20Like%20I%27m%20Kobe" rel="noopener" target="_blank">Ballin Like I'm Kobe</a></td></tr>
+<tr><td>K-os</td><td><a href="https://music.youtube.com/search?q=K-os%20Joyful%20Rebellion" rel="noopener" target="_blank">Joyful Rebellion</a></td></tr>
+<tr><td>Shad</td><td><a href="https://music.youtube.com/search?q=Shad%20TSOL" rel="noopener" target="_blank">TSOL</a></td></tr>
+<tr><td>Classified</td><td><a href="https://music.youtube.com/search?q=Classified%20Boy-Cott-In%20the%20Industry" rel="noopener" target="_blank">Boy-Cott-In the Industry</a></td></tr>
+<tr><td>Kardinal Offishall</td><td><a href="https://music.youtube.com/search?q=Kardinal%20Offishall%20Fire%20and%20Glory" rel="noopener" target="_blank">Fire and Glory</a></td></tr>
+<tr><td>Maestro Fresh Wes</td><td><a href="https://music.youtube.com/search?q=Maestro%20Fresh%20Wes%20Symphony%20in%20Effect" rel="noopener" target="_blank">Symphony in Effect</a></td></tr>
+<tr><td>Pressa</td><td><a href="https://music.youtube.com/search?q=Pressa%20Press%20Machine" rel="noopener" target="_blank">Press Machine</a></td></tr>
+<tr><td>Belly</td><td><a href="https://music.youtube.com/search?q=Belly%20Up%20for%20Days" rel="noopener" target="_blank">Up for Days</a></td></tr>
+<tr><td>Jazz Cartier</td><td><a href="https://music.youtube.com/search?q=Jazz%20Cartier%20Hotel%20Paranoia" rel="noopener" target="_blank">Hotel Paranoia</a></td></tr>
+<tr><td>Haviah Mighty</td><td><a href="https://music.youtube.com/search?q=Haviah%20Mighty%2013th%20Floor" rel="noopener" target="_blank">13th Floor</a></td></tr>
+<tr><td>Tory Lanez</td><td><a href="https://music.youtube.com/search?q=Tory%20Lanez%20I%20Told%20You" rel="noopener" target="_blank">I Told You</a></td></tr>
+<tr><td>Loyle Carner</td><td><a href="https://music.youtube.com/search?q=Loyle%20Carner%20Not%20Waving%2C%20But%20Drowning" rel="noopener" target="_blank">Not Waving, But Drowning</a></td></tr>
+<tr><td>Bugzy Malone</td><td><a href="https://music.youtube.com/search?q=Bugzy%20Malone%20B.%20Inspired" rel="noopener" target="_blank">B. Inspired</a></td></tr>
+<tr><td>Ghetts</td><td><a href="https://music.youtube.com/search?q=Ghetts%20Conflict%20of%20Interest" rel="noopener" target="_blank">Conflict of Interest</a></td></tr>
+<tr><td>JME</td><td><a href="https://music.youtube.com/search?q=JME%20Integrity%3E" rel="noopener" target="_blank">Integrity&gt;</a></td></tr>
+<tr><td>P Money</td><td><a href="https://music.youtube.com/search?q=P%20Money%20Live%20%26%20Direct" rel="noopener" target="_blank">Live &amp; Direct</a></td></tr>
+<tr><td>Chip</td><td><a href="https://music.youtube.com/search?q=Chip%20League%20of%20My%20Own%20II" rel="noopener" target="_blank">League of My Own II</a></td></tr>
+<tr><td>Headie One</td><td><a href="https://music.youtube.com/search?q=Headie%20One%20Edna" rel="noopener" target="_blank">Edna</a></td></tr>
+<tr><td>Aitch</td><td><a href="https://music.youtube.com/search?q=Aitch%20AitcH2O" rel="noopener" target="_blank">AitcH2O</a></td></tr>
+<tr><td>Digga D</td><td><a href="https://music.youtube.com/search?q=Digga%20D%20Noughty%20by%20Nature" rel="noopener" target="_blank">Noughty by Nature</a></td></tr>
+<tr><td>M Huncho</td><td><a href="https://music.youtube.com/search?q=M%20Huncho%20Huncholini%20the%201st" rel="noopener" target="_blank">Huncholini the 1st</a></td></tr>
+<tr><td>D-Block Europe</td><td><a href="https://music.youtube.com/search?q=D-Block%20Europe%20The%20Blue%20Print%3A%20Us%20vs.%20Them" rel="noopener" target="_blank">The Blue Print: Us vs. Them</a></td></tr>
+<tr><td>Little Torment</td><td><a href="https://music.youtube.com/search?q=Little%20Torment%20Still%20the%20Same" rel="noopener" target="_blank">Still the Same</a></td></tr>
+<tr><td>Ocean Wisdom</td><td><a href="https://music.youtube.com/search?q=Ocean%20Wisdom%20Wizville" rel="noopener" target="_blank">Wizville</a></td></tr>
+<tr><td>HighFocus (label comp)</td><td><a href="https://music.youtube.com/search?q=HighFocus%20%28label%20comp%29%20High%20Focus%20Records%20Mixtape" rel="noopener" target="_blank">High Focus Records Mixtape</a></td></tr>
+<tr><td>The Streets</td><td><a href="https://music.youtube.com/search?q=The%20Streets%20A%20Grand%20Don%27t%20Come%20for%20Free" rel="noopener" target="_blank">A Grand Don't Come for Free</a></td></tr>
+<tr><td>Plan B</td><td><a href="https://music.youtube.com/search?q=Plan%20B%20The%20Defamation%20of%20Strickland%20Banks" rel="noopener" target="_blank">The Defamation of Strickland Banks</a></td></tr>
+<tr><td>Tinie Tempah (alt)</td><td><a href="https://music.youtube.com/search?q=Tinie%20Tempah%20%28alt%29%20Demonstration" rel="noopener" target="_blank">Demonstration</a></td></tr>
+<tr><td>Professor Green</td><td><a href="https://music.youtube.com/search?q=Professor%20Green%20Alive%20Till%20I%27m%20Dead" rel="noopener" target="_blank">Alive Till I'm Dead</a></td></tr>
+<tr><td>Kano (alt)</td><td><a href="https://music.youtube.com/search?q=Kano%20%28alt%29%20Hoodies%20All%20Summer" rel="noopener" target="_blank">Hoodies All Summer</a></td></tr>
+<tr><td>SO Solid Crew</td><td><a href="https://music.youtube.com/search?q=SO%20Solid%20Crew%20They%20Don%27t%20Know" rel="noopener" target="_blank">They Don't Know</a></td></tr>
+<tr><td>Skrapz</td><td><a href="https://music.youtube.com/search?q=Skrapz%20Different%20Cloth" rel="noopener" target="_blank">Different Cloth</a></td></tr>
+<tr><td>Chipmunk (early)</td><td><a href="https://music.youtube.com/search?q=Chipmunk%20%28early%29%20I%20Am%20Chipmunk" rel="noopener" target="_blank">I Am Chipmunk</a></td></tr>
+<tr><td>Potter Payper</td><td><a href="https://music.youtube.com/search?q=Potter%20Payper%20Training%20Day%203" rel="noopener" target="_blank">Training Day 3</a></td></tr>
+<tr><td>Fredo</td><td><a href="https://music.youtube.com/search?q=Fredo%20Third%20Avenue" rel="noopener" target="_blank">Third Avenue</a></td></tr>
+<tr><td>Krept &amp; Konan</td><td><a href="https://music.youtube.com/search?q=Krept%20%26%20Konan%20The%20Long%20Way%20Home" rel="noopener" target="_blank">The Long Way Home</a></td></tr>
+<tr><td>Wretch 32</td><td><a href="https://music.youtube.com/search?q=Wretch%2032%20Black%20and%20White" rel="noopener" target="_blank">Black and White</a></td></tr>
+<tr><td>Devlin</td><td><a href="https://music.youtube.com/search?q=Devlin%20Bud%2C%20Sweat%20%26%20Beers" rel="noopener" target="_blank">Bud, Sweat &amp; Beers</a></td></tr>
+<tr><td>The Dublin City Underground (scene)</td><td><a href="https://music.youtube.com/search?q=The%20Dublin%20City%20Underground%20%28scene%29%20Compilation" rel="noopener" target="_blank">Compilation</a></td></tr>
+<tr><td>Rejjie Snow</td><td><a href="https://music.youtube.com/search?q=Rejjie%20Snow%20Dear%20Annie" rel="noopener" target="_blank">Dear Annie</a></td></tr>
+<tr><td>Nekfeu</td><td><a href="https://music.youtube.com/search?q=Nekfeu%20Feu" rel="noopener" target="_blank">Feu</a></td></tr>
+<tr><td>Vald</td><td><a href="https://music.youtube.com/search?q=Vald%20XEU" rel="noopener" target="_blank">XEU</a></td></tr>
+<tr><td>Damso</td><td><a href="https://music.youtube.com/search?q=Damso%20Ips%C3%A9it%C3%A9" rel="noopener" target="_blank">Ipséité</a></td></tr>
+<tr><td>Hamza</td><td><a href="https://music.youtube.com/search?q=Hamza%201994" rel="noopener" target="_blank">1994</a></td></tr>
+<tr><td>Rohff</td><td><a href="https://music.youtube.com/search?q=Rohff%20La%20fiert%C3%A9%20des%20n%C3%B4tres" rel="noopener" target="_blank">La fierté des nôtres</a></td></tr>
+<tr><td>Jul</td><td><a href="https://music.youtube.com/search?q=Jul%20My%20World" rel="noopener" target="_blank">My World</a></td></tr>
+<tr><td>Soprano</td><td><a href="https://music.youtube.com/search?q=Soprano%20Cosmopolitanie" rel="noopener" target="_blank">Cosmopolitanie</a></td></tr>
+<tr><td>Lomepal</td><td><a href="https://music.youtube.com/search?q=Lomepal%20FLIP" rel="noopener" target="_blank">FLIP</a></td></tr>
+<tr><td>Gims</td><td><a href="https://music.youtube.com/search?q=Gims%20Subliminal" rel="noopener" target="_blank">Subliminal</a></td></tr>
+<tr><td>Soolking</td><td><a href="https://music.youtube.com/search?q=Soolking%20Fruit%20du%20d%C3%A9mon" rel="noopener" target="_blank">Fruit du démon</a></td></tr>
+<tr><td>Alpha Wann</td><td><a href="https://music.youtube.com/search?q=Alpha%20Wann%20Une%20main%20lave%20l%27autre" rel="noopener" target="_blank">Une main lave l'autre</a></td></tr>
+<tr><td>Georgio</td><td><a href="https://music.youtube.com/search?q=Georgio%20Bleu%20Noir" rel="noopener" target="_blank">Bleu Noir</a></td></tr>
+<tr><td>Lorenzo</td><td><a href="https://music.youtube.com/search?q=Lorenzo%20Rien%20%C3%A0%20branler" rel="noopener" target="_blank">Rien à branler</a></td></tr>
+<tr><td>OrelSan &amp; Gringe (Casseurs Flowters)</td><td><a href="https://music.youtube.com/search?q=OrelSan%20%26%20Gringe%20%28Casseurs%20Flowters%29%20Orelsan%20et%20Gringe%20sont..." rel="noopener" target="_blank">Orelsan et Gringe sont...</a></td></tr>
+<tr><td>Roméo Elvis</td><td><a href="https://music.youtube.com/search?q=Rom%C3%A9o%20Elvis%20Morale%202" rel="noopener" target="_blank">Morale 2</a></td></tr>
+<tr><td>Sch (alt)</td><td><a href="https://music.youtube.com/search?q=Sch%20%28alt%29%20Rooftop" rel="noopener" target="_blank">Rooftop</a></td></tr>
+<tr><td>Oxmo Puccino</td><td><a href="https://music.youtube.com/search?q=Oxmo%20Puccino%20L%27amour%20est%20mort" rel="noopener" target="_blank">L'amour est mort</a></td></tr>
+<tr><td>Youssoupha</td><td><a href="https://music.youtube.com/search?q=Youssoupha%20Noir%20D%2A%2A%2A%2A" rel="noopener" target="_blank">Noir D****</a></td></tr>
+<tr><td>Keny Arkana</td><td><a href="https://music.youtube.com/search?q=Keny%20Arkana%20Entre%20ciment%20et%20belle%20%C3%A9toile" rel="noopener" target="_blank">Entre ciment et belle étoile</a></td></tr>
+<tr><td>La Rumeur</td><td><a href="https://music.youtube.com/search?q=La%20Rumeur%20Du%20c%C5%93ur%20%C3%A0%20l%27outrage" rel="noopener" target="_blank">Du cœur à l'outrage</a></td></tr>
+<tr><td>IAM (alt)</td><td><a href="https://music.youtube.com/search?q=IAM%20%28alt%29%20Revoir%20un%20printemps" rel="noopener" target="_blank">Revoir un printemps</a></td></tr>
+<tr><td>Kool Savas</td><td><a href="https://music.youtube.com/search?q=Kool%20Savas%20Der%20beste%20Tag%20meines%20Lebens" rel="noopener" target="_blank">Der beste Tag meines Lebens</a></td></tr>
+<tr><td>Sido</td><td><a href="https://music.youtube.com/search?q=Sido%20Maske" rel="noopener" target="_blank">Maske</a></td></tr>
+<tr><td>Bushido</td><td><a href="https://music.youtube.com/search?q=Bushido%20Sonny%20Black" rel="noopener" target="_blank">Sonny Black</a></td></tr>
+<tr><td>Kollegah</td><td><a href="https://music.youtube.com/search?q=Kollegah%20King" rel="noopener" target="_blank">King</a></td></tr>
+<tr><td>Farid Bang</td><td><a href="https://music.youtube.com/search?q=Farid%20Bang%20Killa" rel="noopener" target="_blank">Killa</a></td></tr>
+<tr><td>Casper</td><td><a href="https://music.youtube.com/search?q=Casper%20XOXO" rel="noopener" target="_blank">XOXO</a></td></tr>
+<tr><td>Marteria</td><td><a href="https://music.youtube.com/search?q=Marteria%20Zum%20Gl%C3%BCck%20in%20die%20Zukunft" rel="noopener" target="_blank">Zum Glück in die Zukunft</a></td></tr>
+<tr><td>Cro</td><td><a href="https://music.youtube.com/search?q=Cro%20Raop" rel="noopener" target="_blank">Raop</a></td></tr>
+<tr><td>Bonez MC</td><td><a href="https://music.youtube.com/search?q=Bonez%20MC%20Hollywood" rel="noopener" target="_blank">Hollywood</a></td></tr>
+<tr><td>RAF Camora</td><td><a href="https://music.youtube.com/search?q=RAF%20Camora%20Anthrazit" rel="noopener" target="_blank">Anthrazit</a></td></tr>
+<tr><td>K.I.Z.</td><td><a href="https://music.youtube.com/search?q=K.I.Z.%20Hurra%20die%20Welt%20geht%20unter" rel="noopener" target="_blank">Hurra die Welt geht unter</a></td></tr>
+<tr><td>Capital Bra</td><td><a href="https://music.youtube.com/search?q=Capital%20Bra%20Berlin%20Lebt" rel="noopener" target="_blank">Berlin Lebt</a></td></tr>
+<tr><td>Luciano</td><td><a href="https://music.youtube.com/search?q=Luciano%20L.O.C.O." rel="noopener" target="_blank">L.O.C.O.</a></td></tr>
+<tr><td>Shindy</td><td><a href="https://music.youtube.com/search?q=Shindy%20Dreams" rel="noopener" target="_blank">Dreams</a></td></tr>
+<tr><td>SSIO</td><td><a href="https://music.youtube.com/search?q=SSIO%200%2C9" rel="noopener" target="_blank">0,9</a></td></tr>
+<tr><td>Ufo361</td><td><a href="https://music.youtube.com/search?q=Ufo361%20Ich%20bin%203%20Berliner" rel="noopener" target="_blank">Ich bin 3 Berliner</a></td></tr>
+<tr><td>Kontra K</td><td><a href="https://music.youtube.com/search?q=Kontra%20K%20Labyrinth" rel="noopener" target="_blank">Labyrinth</a></td></tr>
+<tr><td>SXTN</td><td><a href="https://music.youtube.com/search?q=SXTN%20Leben%20am%20Limit" rel="noopener" target="_blank">Leben am Limit</a></td></tr>
+<tr><td>Savas &amp; Sido</td><td><a href="https://music.youtube.com/search?q=Savas%20%26%20Sido%20Royal%20Bunker" rel="noopener" target="_blank">Royal Bunker</a></td></tr>
+<tr><td>Marracash</td><td><a href="https://music.youtube.com/search?q=Marracash%20Persona" rel="noopener" target="_blank">Persona</a></td></tr>
+<tr><td>Guè</td><td><a href="https://music.youtube.com/search?q=Gu%C3%A8%20GVESUS" rel="noopener" target="_blank">GVESUS</a></td></tr>
+<tr><td>Fabri Fibra</td><td><a href="https://music.youtube.com/search?q=Fabri%20Fibra%20Tradimento" rel="noopener" target="_blank">Tradimento</a></td></tr>
+<tr><td>Salmo</td><td><a href="https://music.youtube.com/search?q=Salmo%20Hellvisback" rel="noopener" target="_blank">Hellvisback</a></td></tr>
+<tr><td>Sfera Ebbasta</td><td><a href="https://music.youtube.com/search?q=Sfera%20Ebbasta%20Rockstar" rel="noopener" target="_blank">Rockstar</a></td></tr>
+<tr><td>Ghali</td><td><a href="https://music.youtube.com/search?q=Ghali%20Album" rel="noopener" target="_blank">Album</a></td></tr>
+<tr><td>Lazza</td><td><a href="https://music.youtube.com/search?q=Lazza%20Sirio" rel="noopener" target="_blank">Sirio</a></td></tr>
+<tr><td>Gemitaiz</td><td><a href="https://music.youtube.com/search?q=Gemitaiz%20Quello%20che%20vi%20consiglio%20vol.%207" rel="noopener" target="_blank">Quello che vi consiglio vol. 7</a></td></tr>
+<tr><td>MadMan</td><td><a href="https://music.youtube.com/search?q=MadMan%20MM%20Vol.%203" rel="noopener" target="_blank">MM Vol. 3</a></td></tr>
+<tr><td>Nitro</td><td><a href="https://music.youtube.com/search?q=Nitro%20Suicidol" rel="noopener" target="_blank">Suicidol</a></td></tr>
+<tr><td>Noyz Narcos</td><td><a href="https://music.youtube.com/search?q=Noyz%20Narcos%20Guilty" rel="noopener" target="_blank">Guilty</a></td></tr>
+<tr><td>Jake La Furia</td><td><a href="https://music.youtube.com/search?q=Jake%20La%20Furia%20Musica%20Commerciale" rel="noopener" target="_blank">Musica Commerciale</a></td></tr>
+<tr><td>Emis Killa</td><td><a href="https://music.youtube.com/search?q=Emis%20Killa%20L%27Erba%20Cattiva" rel="noopener" target="_blank">L'Erba Cattiva</a></td></tr>
+<tr><td>Fedez</td><td><a href="https://music.youtube.com/search?q=Fedez%20Sig.%20Brainwash%20-%20L%27arte%20di%20accontentare" rel="noopener" target="_blank">Sig. Brainwash - L'arte di accontentare</a></td></tr>
+<tr><td>El Chojin</td><td><a href="https://music.youtube.com/search?q=El%20Chojin%20El%20ataque%20de%20los%20que%20observaban" rel="noopener" target="_blank">El ataque de los que observaban</a></td></tr>
+<tr><td>ZPU</td><td><a href="https://music.youtube.com/search?q=ZPU%20He%20tenido%20un%20sue%C3%B1o" rel="noopener" target="_blank">He tenido un sueño</a></td></tr>
+<tr><td>Hard GZ</td><td><a href="https://music.youtube.com/search?q=Hard%20GZ%20Kaos%20N%C3%B3mada" rel="noopener" target="_blank">Kaos Nómada</a></td></tr>
+<tr><td>Recycled J</td><td><a href="https://music.youtube.com/search?q=Recycled%20J%20City%20Pop" rel="noopener" target="_blank">City Pop</a></td></tr>
+<tr><td>Rels B</td><td><a href="https://music.youtube.com/search?q=Rels%20B%20Happy%20Birthday%20Flakko" rel="noopener" target="_blank">Happy Birthday Flakko</a></td></tr>
+<tr><td>Kidd Keo</td><td><a href="https://music.youtube.com/search?q=Kidd%20Keo%20Back%20to%20Rockport" rel="noopener" target="_blank">Back to Rockport</a></td></tr>
+<tr><td>H Roto</td><td><a href="https://music.youtube.com/search?q=H%20Roto%20Bajo%20mi%20cielo" rel="noopener" target="_blank">Bajo mi cielo</a></td></tr>
+<tr><td>Ayax y Prok</td><td><a href="https://music.youtube.com/search?q=Ayax%20y%20Prok%20Albayz%C3%ADn" rel="noopener" target="_blank">Albayzín</a></td></tr>
+<tr><td>Fernando Costa</td><td><a href="https://music.youtube.com/search?q=Fernando%20Costa%20Tranquil%C3%ADsimo" rel="noopener" target="_blank">Tranquilísimo</a></td></tr>
+<tr><td>Foyone</td><td><a href="https://music.youtube.com/search?q=Foyone%20Presidente" rel="noopener" target="_blank">Presidente</a></td></tr>
+<tr><td>Snow Tha Product (MX/US)</td><td><a href="https://music.youtube.com/search?q=Snow%20Tha%20Product%20%28MX/US%29%20Vibe%20Higher" rel="noopener" target="_blank">Vibe Higher</a></td></tr>
+<tr><td>Valete</td><td><a href="https://music.youtube.com/search?q=Valete%20Servi%C3%A7o%20P%C3%BAblico" rel="noopener" target="_blank">Serviço Público</a></td></tr>
+<tr><td>Sam The Kid</td><td><a href="https://music.youtube.com/search?q=Sam%20The%20Kid%20Pratica%28mente%29" rel="noopener" target="_blank">Pratica(mente)</a></td></tr>
+<tr><td>Slow J</td><td><a href="https://music.youtube.com/search?q=Slow%20J%20The%20Art%20of%20Slowing%20Down" rel="noopener" target="_blank">The Art of Slowing Down</a></td></tr>
+<tr><td>Piruka</td><td><a href="https://music.youtube.com/search?q=Piruka%20AClara" rel="noopener" target="_blank">AClara</a></td></tr>
+<tr><td>Canserbero</td><td><a href="https://music.youtube.com/search?q=Canserbero%20Muerte" rel="noopener" target="_blank">Muerte</a></td></tr>
+<tr><td>Akapellah</td><td><a href="https://music.youtube.com/search?q=Akapellah%20Como%20Nunca" rel="noopener" target="_blank">Como Nunca</a></td></tr>
+<tr><td>Lil Supa</td><td><a href="https://music.youtube.com/search?q=Lil%20Supa%20SERIO" rel="noopener" target="_blank">SERIO</a></td></tr>
+<tr><td>Apache</td><td><a href="https://music.youtube.com/search?q=Apache%20ApachElypse" rel="noopener" target="_blank">ApachElypse</a></td></tr>
+<tr><td>Micro TDH</td><td><a href="https://music.youtube.com/search?q=Micro%20TDH%209" rel="noopener" target="_blank">9</a></td></tr>
+<tr><td>Nacho (VZLA hiphop)</td><td><a href="https://music.youtube.com/search?q=Nacho%20%28VZLA%20hiphop%29%20La%20Buena%20Fortuna" rel="noopener" target="_blank">La Buena Fortuna</a></td></tr>
+<tr><td>Portavoz</td><td><a href="https://music.youtube.com/search?q=Portavoz%20Escribo%20Rap%20Con%20R%20de%20Revoluci%C3%B3n" rel="noopener" target="_blank">Escribo Rap Con R de Revolución</a></td></tr>
+<tr><td>Ana Tijoux</td><td><a href="https://music.youtube.com/search?q=Ana%20Tijoux%201977" rel="noopener" target="_blank">1977</a></td></tr>
+<tr><td>Movimiento Original</td><td><a href="https://music.youtube.com/search?q=Movimiento%20Original%20Edici%C3%B3n%20Especial" rel="noopener" target="_blank">Edición Especial</a></td></tr>
+<tr><td>Jonas Sanche</td><td><a href="https://music.youtube.com/search?q=Jonas%20Sanche%20Conjunto%20vac%C3%ADo" rel="noopener" target="_blank">Conjunto vacío</a></td></tr>
+<tr><td>Nanpa Básico</td><td><a href="https://music.youtube.com/search?q=Nanpa%20B%C3%A1sico%20Escrito%20en%20las%20paredes" rel="noopener" target="_blank">Escrito en las paredes</a></td></tr>
+<tr><td>Alcolirykoz</td><td><a href="https://music.youtube.com/search?q=Alcolirykoz%20Servicios%20AmbulatorioZ" rel="noopener" target="_blank">Servicios AmbulatorioZ</a></td></tr>
+<tr><td>Crudo Means Raw</td><td><a href="https://music.youtube.com/search?q=Crudo%20Means%20Raw%20Esto%20no%20es%20Rap" rel="noopener" target="_blank">Esto no es Rap</a></td></tr>
+<tr><td>La Etnnia</td><td><a href="https://music.youtube.com/search?q=La%20Etnnia%20Zona%20Prohibida" rel="noopener" target="_blank">Zona Prohibida</a></td></tr>
+<tr><td>Norick</td><td><a href="https://music.youtube.com/search?q=Norick%20Mas%20Flores%20que%20Balas" rel="noopener" target="_blank">Mas Flores que Balas</a></td></tr>
+<tr><td>Rapper School</td><td><a href="https://music.youtube.com/search?q=Rapper%20School%20Nuestras%20Calles" rel="noopener" target="_blank">Nuestras Calles</a></td></tr>
+<tr><td>Charles Ans</td><td><a href="https://music.youtube.com/search?q=Charles%20Ans%20Smile" rel="noopener" target="_blank">Smile</a></td></tr>
+<tr><td>Sabino</td><td><a href="https://music.youtube.com/search?q=Sabino%20Yin" rel="noopener" target="_blank">Yin</a></td></tr>
+<tr><td>Lirika Inverza</td><td><a href="https://music.youtube.com/search?q=Lirika%20Inverza%20Simple" rel="noopener" target="_blank">Simple</a></td></tr>
+</tbody>
+</table>
+<script>
+const filtro=document.getElementById('filtro');
+const tbody=document.querySelector('#tablaArtistas tbody');
+const rows=[...tbody.querySelectorAll('tr')];
+filtro.addEventListener('input',()=>{
+  const q=filtro.value.trim().toLowerCase();
+  for(const tr of rows){
+    tr.style.display = tr.innerText.toLowerCase().includes(q) ? '' : 'none';
+  }
+});
+</script>
+</main>
+<footer>
+<div class="span">
+</div>
+<table>
+<tr>
+<td class="levantarfoto">
+<img alt="" class="fotored" src="assets/img/face2.png"/>
+<h1><a class="Facebook" href="https://Facebook.com" target="_blank">Facebook</a></h1>
+</td>
+<td class="levantarfoto">
+<img alt="" class="fotored" src="assets/img/insta2.jpg"/>
+<h1><a class="Instagram" href="https://instagram.com" target="_blank">Instagram</a></h1>
+</td>
+<td class="levantarfoto">
+<img alt="" class="fotored" src="assets/img/youtube4.png"/>
+<h1><a class="Youtube" href="https://yotube.com" target="_blank">Youtube</a></h1>
+</td>
+</tr>
+</table>
+<div class="span">
+<span>Todos los derechos reservados por @Elmaiz</span>
+</div>
+</footer>
+<script>
+(function(){
+  // Helper: guess country from an approximate map (fallback 'Otros')
+  const countryMap = {
+    // MX
+    "Iluminatik":"México","C-Kan":"México","Cartel de Santa":"México","Santa Fe Klan":"México","Alemán":"México","Gera MX":"México","Aczino":"México","Dharius":"México","Control Machete":"México","MC Davo":"México","Lirika Inverza":"México","Charles Ans":"México","Sabino":"México","Hadrián":"México","Eptos Uno":"México","Kinto Sol":"México","Toser One":"México","Neto Peña":"México","Lefty SM":"México","Santa RM":"México","Yoss Bones":"México","Yoga Fire":"México","Lng/SHT":"México",
+    // AR / CL / CO / VE / PR
+    "Duki":"Argentina","WOS":"Argentina","Trueno":"Argentina","Bizarrap":"Argentina","Khea":"Argentina","Acru":"Argentina","Lit Killah":"Argentina","Ecko":"Argentina","Tiago PZK":"Argentina","Canserbero":"Venezuela","Akapellah":"Venezuela","Apache":"Venezuela","Micro TDH":"Venezuela","Portavoz":"Chile","Ana Tijoux":"Chile","Movimiento Original":"Chile","Jonas Sanche":"Chile","Alcolirykoz":"Colombia","Crudo Means Raw":"Colombia","Nanpa Básico":"Colombia","Vico C":"Puerto Rico","Tego Calderón":"Puerto Rico","Residente":"Puerto Rico","Calle 13":"Puerto Rico","Eladio Carrión":"Puerto Rico","Bad Bunny":"Puerto Rico","Nicky Jam":"Puerto Rico","Anuel AA":"Puerto Rico","Daddy Yankee":"Puerto Rico",
+    // ES / PT
+    "Kase.O":"España","Violadores del Verso":"España","Nach":"España","SFDK":"España","Natos y Waor":"España","ToteKing":"España","Porta":"España","Hard GZ":"España","Ayax":"España","Prok":"España","Fernandocosta":"España","Recycled J":"España","Rels B":"España","Foyone":"España","El Chojin":"España","ZPU":"España","Rayden":"España","Sharif":"España","Kaze":"España","Valete":"Portugal","Sam The Kid":"Portugal","Slow J":"Portugal","Piruka":"Portugal",
+    // US / CA
+    "2Pac":"Estados Unidos","The Notorious B.I.G.":"Estados Unidos","Jay-Z":"Estados Unidos","Nas":"Estados Unidos","Eminem":"Estados Unidos","Dr. Dre":"Estados Unidos","Snoop Dogg":"Estados Unidos","Ice Cube":"Estados Unidos","N.W.A":"Estados Unidos","Wu-Tang Clan":"Estados Unidos","Kendrick Lamar":"Estados Unidos","J. Cole":"Estados Unidos","Travis Scott":"Estados Unidos","OutKast":"Estados Unidos","A Tribe Called Quest":"Estados Unidos","Public Enemy":"Estados Unidos","Lauryn Hill":"Estados Unidos","Fugees":"Estados Unidos","Drake":"Canadá","The Weeknd":"Canadá","K-os":"Canadá","Shad":"Canadá","Classified":"Canadá",
+    // UK / IE
+    "Skepta":"Reino Unido","Stormzy":"Reino Unido","Dave":"Reino Unido","AJ Tracey":"Reino Unido","Central Cee":"Reino Unido","Loyle Carner":"Reino Unido","The Streets":"Reino Unido","Kano":"Reino Unido","Dizzee Rascal":"Reino Unido",
+    // FR / BE / CH
+    "IAM":"Francia","MC Solaar":"Francia","Booba":"Francia","Kaaris":"Francia","PNL":"Francia","NTM":"Francia","Orelsan":"Francia","Ninho":"Francia","SCH":"Francia","Nekfeu":"Francia","Damso":"Bélgica","Hamza":"Bélgica",
+    // DE / IT / NL / SE / NO
+    "Sido":"Alemania","Bushido":"Alemania","Kool Savas":"Alemania","RAF Camora":"Austria","Bonez MC":"Alemania","Marracash":"Italia","Guè":"Italia","Fabri Fibra":"Italia","Salmo":"Italia","Sfera Ebbasta":"Italia","Ghali":"Italia","Lazza":"Italia","Yung Lean":"Suecia","Timbuktu":"Suecia","Petter":"Suecia","Karpe":"Noruega","Ronnie Flex":"Países Bajos","Ali B":"Países Bajos","Boef":"Países Bajos",
+    // JP / KR / CN / TW / PH
+    "Nujabes":"Japón","Shing02":"Japón","KOHH":"Japón","Kreva":"Japón","Zeebra":"Japón","PUNPEE":"Japón","Epik High":"Corea del Sur","Zico":"Corea del Sur","Beenzino":"Corea del Sur","Dok2":"Corea del Sur","The Quiett":"Corea del Sur","Higher Brothers":"China","MC HotDog":"Taiwán","Soft Lipa":"Taiwán","Gloc-9":"Filipinas","Shanti Dope":"Filipinas","Abra (PH)":"Filipinas",
+    // AF
+    "Sarkodie":"Ghana","M.anifest":"Ghana","AKA":"Sudáfrica","Cassper Nyovest":"Sudáfrica","Nasty C":"Sudáfrica","Sampa the Great":"Zambia/Australia","Olamide":"Nigeria","Phyno":"Nigeria","M.I Abaga":"Nigeria","Falz":"Nigeria",
+    // OTHER defaults
+    "Iluminatik (MX)":"México"
+};
+
+  // Grab table rows (artist, album, link)
+  const tabla = document.querySelector('#tablaArtistas') || document.querySelector('table');
+  const tbody = tabla ? tabla.querySelector('tbody') : null;
+  if(!tabla || !tbody){ return; }
+
+
+  function sortByArtist(a,b){
+    return a.artista.localeCompare(b.artista, 'es', {sensitivity:'base'});
+  }
+
+  // Build data from table
+  const rows = Array.from(tbody.querySelectorAll('tr')).map(tr => {
+    const tds = tr.querySelectorAll('td');
+    if(tds.length < 2) return null;
+    const artista = tds[0].innerText.trim();
+    const a = tds[1].querySelector('a');
+    const album = a ? a.innerText.trim() : tds[1].innerText.trim();
+    const href = a ? a.getAttribute('href') : '#';
+    const pais = countryMap[artista] || 'Otros';
+    return { artista, album, href, pais, letra: (artista[0]||'').toUpperCase() };
+  }).filter(Boolean);
+
+  // Build País select options dynamically
+  const selPais = document.getElementById('filtroPais');
+  const paises = Array.from(new Set(rows.map(r => r.pais))).sort((a,b)=>a.localeCompare(b));
+  for(const p of paises){
+    const opt = document.createElement('option');
+    opt.value = p;
+    opt.textContent = p;
+    selPais.appendChild(opt);
+  }
+
+  const selLetra = document.getElementById('filtroLetra');
+  const inputBusqueda = document.getElementById('filtro');
+  const grid = document.getElementById('catalogoGrid');
+  const btnCat = document.getElementById('btnVistaCatalogo');
+  const btnTab = document.getElementById('btnVistaTabla');
+
+  function cardTemplate(item){
+    return `<div class="card-hiphop" data-pais="${item.pais}" data-letra="${item.letra}">
+      <div class="artista">${item.artista}</div>
+      <div class="album"><a href="${item.href}" target="_blank" rel="noopener">${item.album}</a></div>
+      <div class="meta">${item.pais} • ${item.letra}</div>
+    </div>`;
+  }
+
+  function renderGrid(list){
+    grid.innerHTML = list.map(cardTemplate).join('');
+  }
+
+  // Initial render (sorted)
+  rows.sort(sortByArtist);
+  renderGrid(rows);
+
+  // Sort the TABLE DOM to match alphabetical order
+  (function(){
+    const trs = Array.from(tbody.querySelectorAll('tr'));
+    const sorted = trs.slice().sort((t1,t2)=>{
+      const a1 = (t1.querySelector('td')?.innerText||'').trim();
+      const a2 = (t2.querySelector('td')?.innerText||'').trim();
+      return a1.localeCompare(a2, 'es', {sensitivity:'base'});
+    });
+    sorted.forEach(tr=>tbody.appendChild(tr));
+  })();
+
+  function aplicarFiltros(){
+    const q = (inputBusqueda && inputBusqueda.value || '').trim().toLowerCase();
+    const p = selPais.value;
+    const l = selLetra.value;
+    let filtrados = rows.filter(r => {
+      const matchQ = !q || (r.artista + ' ' + r.album).toLowerCase().includes(q);
+      const matchP = !p || r.pais === p;
+      const matchL = !l || r.letra === l;
+      return matchQ && matchP && matchL;
+    });
+    filtrados.sort(sortByArtist);
+    renderGrid(filtrados);
+  }
+
+  if(inputBusqueda) inputBusqueda.addEventListener('input', aplicarFiltros);
+  selPais.addEventListener('change', aplicarFiltros);
+  selLetra.addEventListener('change', aplicarFiltros);
+
+  // Toggle views
+  function mostrarCatalogo(){ grid.style.display='grid'; tabla.style.display='none'; }
+  function mostrarTabla(){ grid.style.display='none'; tabla.style.display='table'; }
+
+  btnCat.addEventListener('click', mostrarCatalogo);
+  btnTab.addEventListener('click', mostrarTabla);
+})();
+</script></body>
+</html>
