@@ -3,6 +3,96 @@
   transform-origin: top left;
   width: 133.33%;
 }
+/* Asegura que todo el contenido use el 100% del ancho disponible */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Las imágenes se escalan para no salir de la pantalla */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Para el header, centrado simple sin tablas */
+header {
+    text-align: center;
+    padding: 10px;
+}
+
+/* Menú principal: cambia el display para que sea horizontal en desktop y vertical en móvil */
+nav table {
+    width: 100%;
+}
+
+nav td {
+    padding: 8px;
+}
+
+@media (max-width: 768px) {
+    /* En móvil, que el menú sea vertical */
+    nav table, nav tr {
+        display: block;
+    }
+
+    nav td {
+        display: block;
+        width: 100%;
+        padding: 12px 0;
+        border-bottom: 1px solid #ddd;
+    }
+}
+
+/* Ajusta párrafos para tener mejor lectura en móviles */
+p {
+    padding: 0 10px;
+    line-height: 1.6;
+}
+
+/* El contenedor principal también puede tener padding para no pegarse al borde */
+main > div {
+    padding: 10px;
+}
+
+/* Para el footer */
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+}
+
+footer a {
+    color: #f1f1f1;
+    text-decoration: none;
+}
+
+/* Para las redes sociales, apílalas en móvil */
+footer table {
+    width: 100%;
+}
+
+footer td {
+    padding: 10px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    footer table, footer tr {
+        display: block;
+    }
+
+    footer td {
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+    }
+}
+
 nav table,nav a{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color:#02010c;
@@ -284,3 +374,4 @@ footer, footer *{
   max-width: 100%;
   overflow-wrap: anywhere;
 }
+
